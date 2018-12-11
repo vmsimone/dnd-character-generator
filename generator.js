@@ -1,8 +1,3 @@
-function loadPage() {
-  generateCharacter(elf, acolyte);
-  generateCharacter(halfOrc, outlander);
-}
-
 //simulates rolling 4 dice and adding the highest three
 function roll4add3() {
   const first = Math.floor(Math.random() * 6) + 1;
@@ -17,16 +12,33 @@ function roll4add3() {
   return total
 }
 
-function rollStats() {
+function calculateMod(statLevel) {
+  let modifier = Math.floor((statLevel - 10) / 2);
+  if(modifier > 0) {
+    modifier = "+" + modifier;
+  }
   return {
-    "STR": roll4add3(),
-    "DEX": roll4add3(),
-    "CON": roll4add3(),
-    "INT": roll4add3(),
-    "WIS": roll4add3(),
-    "CHA": roll4add3(),
-    "AC": 10,
-    "HP": 10
+    "lvl": statLevel,
+    "mod": modifier
+  }
+}
+
+function rollStats() {
+  const str = roll4add3();
+  const dex = roll4add3();
+  const con = roll4add3();
+  const int = roll4add3();
+  const wis = roll4add3();
+  const cha = roll4add3();
+
+  return {
+    "STR": calculateMod(str),
+    "DEX": calculateMod(dex),
+    "CON": calculateMod(con),
+    "INT": calculateMod(int),
+    "WIS": calculateMod(wis),
+    "CHA": calculateMod(cha),
+    "AC": 10 + Math.floor((dex - 10) / 2)
   }
 }
 
@@ -59,12 +71,13 @@ function displayCharacter(character) {
     <h2>Race: ${character.race}</h2>
     <h3>Background: ${character.background}</h3>
     <p>
-      STR: ${character.stats.STR}<br>
-      DEX: ${character.stats.DEX}<br>
-      CON: ${character.stats.CON}<br>
-      INT: ${character.stats.INT}<br>
-      WIS: ${character.stats.WIS}<br>
-      CHA: ${character.stats.CHA}
+      STR: ${character.stats.STR.lvl}, ${character.stats.STR.mod}<br>
+      DEX: ${character.stats.DEX.lvl}, ${character.stats.DEX.mod}<br>
+      CON: ${character.stats.CON.lvl}, ${character.stats.CON.mod}<br>
+      INT: ${character.stats.INT.lvl}, ${character.stats.INT.mod}<br>
+      WIS: ${character.stats.WIS.lvl}, ${character.stats.WIS.mod}<br>
+      CHA: ${character.stats.CHA.lvl}, ${character.stats.CHA.mod}<br>
+      AC: ${character.stats.AC}
     </p>
     <h4>Languages:</h4>
     <ul>
@@ -80,5 +93,3 @@ function displayCharacter(character) {
     </ul>
   `);
 }
-
-$(loadPage);
