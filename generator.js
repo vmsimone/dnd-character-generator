@@ -40,29 +40,45 @@ function generateCharacter(race, background) {
   
   //combined arrays we stored will fill in the missing items
   let character = Object.assign({}, race, background, combinedStats);
-  console.log(character);
 
   character.stats = rollStats();
-  
   displayCharacter(character);
 }
 
+function generateList(arr) {
+  let mappedArr = arr.map(listItem => `<li>${listItem}</li>\n`);
+  return mappedArr.join('');
+}
+
 function displayCharacter(character) {
-    $('main').append(`
-      <h2>Race: ${character.race}</h2>
-      <h3>Background: ${character.background}</h3>
-      <p>
-        STR: ${character.stats.STR}<br>
-        DEX: ${character.stats.DEX}<br>
-        CON: ${character.stats.CON}<br>
-        INT: ${character.stats.INT}<br>
-        WIS: ${character.stats.WIS}<br>
-        CHA: ${character.stats.CHA}
-      </p>
-      <p>Languages: </p>
-      <p>Skills: </p>
-      <p>Feats: </p>
-    `);
+  const langList = generateList(character.languages);
+  const skillList = generateList(character.skillProficiencies);
+  const featList = generateList(character.feats);
+
+  $('main').append(`
+    <h2>Race: ${character.race}</h2>
+    <h3>Background: ${character.background}</h3>
+    <p>
+      STR: ${character.stats.STR}<br>
+      DEX: ${character.stats.DEX}<br>
+      CON: ${character.stats.CON}<br>
+      INT: ${character.stats.INT}<br>
+      WIS: ${character.stats.WIS}<br>
+      CHA: ${character.stats.CHA}
+    </p>
+    <h4>Languages:</h4>
+    <ul>
+      ${langList}
+    </ul>
+    <h4>Skill Proficiencies:</h4>
+    <ul>
+      ${skillList}
+    </ul>
+    <h4>Features:</h4>
+    <ul>
+      ${featList}
+    </ul>
+  `);
 }
 
 $(loadPage);
