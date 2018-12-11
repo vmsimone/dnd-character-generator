@@ -34,10 +34,13 @@ function generateCharacter(race, background) {
   const languages = [...race.languages, ...background.languages];
   const skillProficiencies = [...race.skillProficiencies, ...background.skillProficiencies];
   const feats = [...race.feats, ...background.feats];
+
+  //stores combined arrays
   const combinedStats = {languages, skillProficiencies, feats}
   
-  let combinedObject = Object.assign({}, race, background);
-  let character = Object.assign({}, combinedObject, combinedStats);
+  //combined arrays we stored will fill in the missing items
+  let character = Object.assign({}, race, background, combinedStats);
+  console.log(character);
 
   character.stats = rollStats();
   
@@ -56,7 +59,9 @@ function displayCharacter(character) {
         WIS: ${character.stats.WIS}<br>
         CHA: ${character.stats.CHA}
       </p>
-      <p></p>
+      <p>Languages: </p>
+      <p>Skills: </p>
+      <p>Feats: </p>
     `);
 }
 
