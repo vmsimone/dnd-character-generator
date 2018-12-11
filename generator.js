@@ -1,0 +1,5 @@
+function ready() {
+  //placeholder
+}
+
+$(ready);
