@@ -1,28 +1,52 @@
-const testData = [
-  {
-    "race": "Orc",
-    "background": "Outerlander",
-    "class": {
-      "classname": "Barbarian",
-      "level": 1,
-      "subclass": null
-    },
-    "stats": {
-      "STR": 10,
-      "DEX": 7,
-      "CON": 18,
-      "INT": 9,
-      "WIS": 11,
-      "CHA": 12
-    }
-  },
-  {}
-]
+function loadPage() {
+  generateCharacter(elf, acolyte);
+  generateCharacter(halfOrc, outlander);
+}
 
-function displayCharacters() {
-  testData.forEach(character => {
+//simulates rolling 4 dice and adding the highest three
+function roll4add3() {
+  const first = Math.floor(Math.random() * 6) + 1;
+  const second = Math.floor(Math.random() * 6) + 1;
+  const third = Math.floor(Math.random() * 6) + 1;
+  const fourth = Math.floor(Math.random() * 6) + 1;
+  
+  let rolls = [first, second, third, fourth];
+  rolls.sort(function(a, b){return b - a});
+
+  const total = rolls[0] + rolls[1] + rolls[2]
+  return total
+}
+
+function rollStats() {
+  return {
+    "STR": roll4add3(),
+    "DEX": roll4add3(),
+    "CON": roll4add3(),
+    "INT": roll4add3(),
+    "WIS": roll4add3(),
+    "CHA": roll4add3(),
+    "AC": 10,
+    "HP": 10
+  }
+}
+
+function generateCharacter(race, background) {
+  const languages = [...race.languages, ...background.languages];
+  const skillProficiencies = [...race.skillProficiencies, ...background.skillProficiencies];
+  const feats = [...race.feats, ...background.feats];
+  const combinedStats = {languages, skillProficiencies, feats}
+  
+  let combinedObject = Object.assign({}, race, background);
+  let character = Object.assign({}, combinedObject, combinedStats);
+
+  character.stats = rollStats();
+  
+  displayCharacter(character);
+}
+
+function displayCharacter(character) {
     $('main').append(`
-      <h2>Level ${character.class.level} ${character.class.classname} ${character.race}</h2>
+      <h2>Race: ${character.race}</h2>
       <h3>Background: ${character.background}</h3>
       <p>
         STR: ${character.stats.STR}<br>
@@ -32,8 +56,8 @@ function displayCharacters() {
         WIS: ${character.stats.WIS}<br>
         CHA: ${character.stats.CHA}
       </p>
+      <p></p>
     `);
-  })
 }
 
-$(displayCharacters);
+$(loadPage);
