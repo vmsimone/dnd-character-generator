@@ -1,6 +1,19 @@
 //globals
-const RACES = [elf, halfOrc, dragonborn];
-const BACKGROUNDS = [acolyte, outlander];
+const RACES = [
+    dragonborn, 
+    hillDwarf, 
+    mtnDwarf, 
+    highElf, 
+    woodElf, 
+    drow, 
+    forestGnome, 
+    rockGnome,
+    human,
+    humanVariant, 
+    halfOrc
+];
+
+const BACKGROUNDS = [acolyte, outlander, charlatan];
 
 function findMatchingObject(selection, globalArr, type) {
     let matchedObject;
@@ -31,7 +44,7 @@ function createFormLabels(fieldset, arr, name) {
         $(fieldset).append(`
             <label for=${obj[name]}>
                 <input type="radio" name=${name} value=${obj[name]} id=${obj[name]} required>
-                ${obj[name]}
+                ${obj[name].split('_').join(' ')}
             </label>
         `)
     });

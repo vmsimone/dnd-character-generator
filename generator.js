@@ -44,11 +44,11 @@ function rollStats() {
 
 function generateCharacter(race, background) {
   const languages = [...race.languages, ...background.languages];
-  const skillProficiencies = [...race.skillProficiencies, ...background.skillProficiencies];
+  const proficiencies = [...race.proficiencies, ...background.proficiencies];
   const feats = [...race.feats, ...background.feats];
 
   //stores combined arrays
-  const combinedStats = {languages, skillProficiencies, feats}
+  const combinedStats = {languages, proficiencies, feats}
   
   //combined arrays we stored will fill in the missing items
   let character = Object.assign({}, race, background, combinedStats);
@@ -64,12 +64,12 @@ function generateList(arr) {
 
 function displayCharacter(character) {
   const langList = generateList(character.languages);
-  const skillList = generateList(character.skillProficiencies);
+  const skillList = generateList(character.proficiencies);
   const featList = generateList(character.feats);
   const equipment = generateList(character.equipment);
 
   $('.character-info').html(`
-    <h2>Race: ${character.race}</h2>
+    <h2>Race: ${character.race.split('_').join(' ')}</h2>
     <h3>Background: ${character.background}</h3>
     <p>
       STR: ${character.stats.STR.lvl}, ${character.stats.STR.mod}<br>
@@ -84,7 +84,7 @@ function displayCharacter(character) {
     <ul>
       ${langList}
     </ul>
-    <h4>Skill Proficiencies:</h4>
+    <h4>Proficiencies:</h4>
     <ul>
       ${skillList}
     </ul>
