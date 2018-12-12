@@ -25,10 +25,12 @@ function readyListeners() {
 function createFormLabels(fieldset, arr, name) {
     arr.forEach(obj => {
         $(fieldset).append(`
-            <label for=${obj[name]}>
+            <div class="option">
                 <input type="radio" name=${name} value=${obj[name]} id=${obj[name]} required>
-                ${obj[name].split('_').join(' ')}
-            </label>
+                <label for=${obj[name]}>
+                    ${obj[name].split('_').join(' ')}
+                </label>
+            </div>
         `)
     });
 }

@@ -9,6 +9,45 @@ legend {
   font-size: 24px;
 }
 
+fieldset {
+  text-align: center;
+}
+
+.option {
+  display: inline-block;
+  width: 150px;
+  height: 20px;
+  padding: 0;
+  margin: 5px;
+}
+
+label {
+  border: 2px black solid;
+  border-radius: 10px;
+  display: block;
+  padding: 5px;
+  margin: 0;
+  width: 90%;
+  text-align: center;
+}
+
+label:hover {
+  border-color: red;
+  color: red;
+  cursor: pointer;
+}
+
+input[type='radio'] {
+  opacity: 0;
+  width: 0;
+}
+
+input[type='radio']:checked + label {
+  background: lightgreen;
+  border-color: black;
+  color: black;
+}
+
 p {
   font-family: 'Open Sans', sans-serif;
 }
