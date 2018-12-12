@@ -232,6 +232,69 @@ const BACKGROUNDS = [
         ]
     },
     {
+        "background": "Criminal/Spy",
+        "proficiencies": ["Deception", "Stealth", "Thieves' Tools", "one gaming set"],
+        "languages": [],
+        "equipment": ["crowbar", "dark common clothes w/ hood"],
+        "money": { "GP": 15 },
+        "feats": [
+            "Criminal Contact – reliable and trustworthy contact who can send messages through criminal networks",
+            "Criminal Specialty – Blackmail, Pickpocket, etc"
+        ]
+    },
+    {
+        "background": "Entertainer/Gladiator",
+        "proficiencies": ["Acrobatics", "Performance", "Disguise kit", "one musical instrument"],
+        "languages": [],
+        "equipment": ["instrument", "admirer’s favor (love letter, hair, trinket)", "costume"],
+        "money": { "GP": 15 },
+        "feats": [
+            "By Popular Demand – you can always find a place to perform that will give you free lodging and food, so long as you perform there each night. People who’ve seen you perform will like you.",
+            "Entertainer Routine – Actor, Dancer, etc."
+        ]
+    },
+    {
+        "background": "Folk Hero",
+        "proficiencies": ["Animal Handling", "Survival", "land vehicles", "Artisan’s Tools"],
+        "languages": [],
+        "equipment": ["artisan's tools", "shovel", "iron pot", "common clothes"],
+        "money": { "GP": 10 },
+        "feats": [
+            "Rustic Hospitality – Can find a place to hide or rest among common-folk as long as you’re non-threatening. They will also shield you from the law, etc, but not risk their lives.",
+            "Defining event – stood up to a monster, saved people, etc"
+        ]
+    },
+    {
+        "background": "Guild Artisan",
+        "proficiencies": ["Insight", "Persuasion", "Artisan’s Tools"],
+        "languages": [],
+        "equipment": ["artisan's tools", "letter of introduction from guild", "traveler's clothes"],
+        "money": { "GP": 15 },
+        "feats": [
+            "Guild Membership – guild members will provide you lodging and food and you can meet patrons, allies, etc in guild halls. Can gain political sway and amnesty for justified crimes through guild if paying dues of 5gp per month and staying in good standing."
+        ]
+    },
+    {
+        "background": "Hermit",
+        "proficiencies": ["Medicine", "Religion", "Herbalism Kit"],
+        "languages": ["any"],
+        "equipment": ["scroll case filled with notes", "winter blanket", "common clothes", "herbalism kit"],
+        "money": { "GP": 5 },
+        "feats": [
+            "Discovery – you have knowledge of an extremely important piece of information or have discovered something of great significance"
+        ]
+    },
+    {
+        "background": "Noble",
+        "proficiencies": ["History", "Persuasion", "a gaming set"],
+        "languages": ["any"],
+        "equipment": ["fine clothes", "signet ring", "scroll of pedigree"],
+        "money": { "GP": 25 },
+        "feats": [
+            "Position of Privilege – people tend to think the best of you and you’re welcome in high society. Common folk accommodate you and avoid your displeasure. You can secure audience with local nobles."
+        ]
+    },
+    {
         "background": "Outlander",
         "proficiencies": ["Athletics", "Survival"],
         "languages": ["any"],
@@ -239,6 +302,16 @@ const BACKGROUNDS = [
         "money": { "GP": 10 },
         "feats": [
             "Wanderer – can always recall general layout of terrain and other features around you and can find food and fresh water for up to 6 people every day if the land has it. Considered rude and uncouth among civilized folk and not used to life in the cities"
+        ]
+    },
+    {
+        "background": "Urchin",
+        "proficiencies": ["Sleight of Hand", "Stealth", "Thieves' Tools", "Disguise kit"],
+        "languages": [],
+        "equipment": ["small knife", "map of hometown", "pet mouse", "token to remember parents", "common clothes"],
+        "money": { "GP": 10 },
+        "feats": [
+            "City Secrets – can navigate back alleys and urban sprawls to reach any location twice as fast"
         ]
     }
 ];
