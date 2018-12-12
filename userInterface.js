@@ -1,6 +1,6 @@
 //globals
-const races = [elf, halfOrc];
-const backgrounds = [acolyte, outlander];
+const RACES = [elf, halfOrc, dragonborn];
+const BACKGROUNDS = [acolyte, outlander];
 
 function findMatchingObject(selection, globalArr, type) {
     let matchedObject;
@@ -17,16 +17,29 @@ function readyListeners() {
     $('.character-generator').submit(event => {
         event.preventDefault();
         let selectedRace = document.querySelector('input[name="race"]:checked').value;
-        selectedRace = findMatchingObject(selectedRace, races, "race");
+        selectedRace = findMatchingObject(selectedRace, RACES, "race");
 
         let selectedBackground = document.querySelector('input[name="background"]:checked').value;
-        selectedBackground = findMatchingObject(selectedBackground, backgrounds, "background");
+        selectedBackground = findMatchingObject(selectedBackground, BACKGROUNDS, "background");
 
         generateCharacter(selectedRace, selectedBackground);
     });
 }
 
+function createFormLabels(fieldset, arr, name) {
+    arr.forEach(obj => {
+        $(fieldset).append(`
+            <label for=${obj[name]}>
+                <input type="radio" name=${name} value=${obj[name]} id=${obj[name]} required>
+                ${obj[name]}
+            </label>
+        `)
+    });
+}
+
 function loadPage() {
+    createFormLabels('.js-race', RACES, 'race');
+    createFormLabels('.js-background', BACKGROUNDS, 'background');
     readyListeners();
 }
 

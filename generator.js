@@ -66,6 +66,7 @@ function displayCharacter(character) {
   const langList = generateList(character.languages);
   const skillList = generateList(character.skillProficiencies);
   const featList = generateList(character.feats);
+  const equipment = generateList(character.equipment);
 
   $('.character-info').html(`
     <h2>Race: ${character.race}</h2>
@@ -90,6 +91,10 @@ function displayCharacter(character) {
     <h4>Features:</h4>
     <ul>
       ${featList}
+    </ul>
+    <h4>Equipment:</h4>
+    <ul>
+      ${equipment}
     </ul>
   `);
 }

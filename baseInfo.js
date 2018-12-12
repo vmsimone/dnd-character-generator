@@ -1,4 +1,25 @@
 //goal is to move all of this into a JSON of sorts
+const dragonborn = {
+    "race": "Dragonborn",
+    "size": "medium",
+    "speed": 30,
+    "languages": ["Common", "Draconic"],
+    "stats": {
+        "STR": 2,
+        "CHA": 1
+    },
+    "skillProficiencies": ["Intimidation"],
+    "feats": [
+        "Draconic Ancestry – Breath weapon and damage resistance",
+        "Breath Weapon – Can use breath as an action. Saving throw for everyone in range, DC = 8 + CON + PROF. 2d6 on fail, 1d6 on success. (3d6 at level 6, 4d6 at 11, 5d6 at 16). Once per rest.",
+        "Damage resist – resistant to ancestral damage type"
+    ]
+}
+
+const dwarf = {
+    
+}
+
 const halfOrc = {
     "race": "Half-Orc",
     "size": "medium",
@@ -54,6 +75,28 @@ const outlander = {
     "feats": [
         "Wanderer – can always recall general layout of terrain and other features around you and can find food and fresh water for up to 6 people every day if the land has it. Considered rude and uncouth among civilized folk and not used to life in the cities"
     ]
+}
+
+const barbarian = {
+    "classname": "Barbarian",
+    "hitDice": "d12",
+    "HP": 12,
+    "proficiencies": ["light and medium armor, shields", "simple and martial weapons"],
+    "savingThrows": ["STR", "CON"],
+    "skills": [2, ["Animal Handling", "Athletics", "Intimidation", "Nature", "Perception", "Survival"]],
+    "equipment": [
+        ["greataxe", "martial melee weapon"], 
+        ["two handaxes", "simple weapon"], 
+        "Explorer’s pack",
+        "Javelins (4)"
+    ],
+    "subClass": null,
+    "level": 1,
+    "feats": {
+        "1": [],
+        "2": [],
+        "3": []
+    }
 }
 
 // may be useful as a prototype later
