@@ -1,20 +1,3 @@
-//globals
-const RACES = [
-    dragonborn, 
-    hillDwarf, 
-    mtnDwarf, 
-    highElf, 
-    woodElf, 
-    drow, 
-    forestGnome, 
-    rockGnome,
-    human,
-    humanVariant, 
-    halfOrc
-];
-
-const BACKGROUNDS = [acolyte, outlander, charlatan];
-
 function findMatchingObject(selection, globalArr, type) {
     let matchedObject;
     for(i=0; i<globalArr.length; i++) {
