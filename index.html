@@ -10,13 +10,37 @@
 
   <body role="document">
     <main role="main" aria-live="assertive">
-      <!--Dynamic HTML will be placed here-->
-      <h1>Title</h1>
-      <p>placeholder text</p>
-      <form>
+      <h1>D&D 5e Character Generator</h1>
+      <form class="character-generator" action="#">
+        <fieldset class="js-race">
+          <legend>Select Race:</legend>
+          <label for="Elf">
+            <input type="radio" name="race" value="Elf" id="Elf">
+            Elf
+          </label>
+          <label for="Half-Orc">
+            <input type="radio" name="race" value="Half-Orc" id="Half-Orc">
+            Half-Orc
+          </label>
+        </fieldset>
+
+        <fieldset class="js-bg">
+          <legend>Select Background:</legend>
+          <label for="Acolyte">
+            <input type="radio" name="background" value="Acolyte" id="Acolyte">
+            Acolyte
+          </label>
+          <label for="Outlander">
+            <input type="radio" name="background" value="Outlander" id="Outlander">
+            Outlander
+          </label>
+        </fieldset>
+        <br>
+        <input type="submit" value="Generate Character!">
       </form>
-      <button id="elf-generator">Generate Elf Acolyte</button>
-      <button id="half-orc-generator">Generate Half-Orc Outlander</button>
+      <section class="character-info">
+        <!--Dynamic HTML will be placed here-->
+      </section>
     </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="baseInfo.js"></script>

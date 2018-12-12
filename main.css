@@ -1,7 +1,12 @@
 h1, 
 h2, 
-h3 {
+h3,
+legend {
   font-family: 'Bentham', serif;
+}
+
+legend {
+  font-size: 24px;
 }
 
 p {

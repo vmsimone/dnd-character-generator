@@ -1,3 +1,4 @@
+//goal is to move all of this into a JSON of sorts
 const halfOrc = {
     "race": "Half-Orc",
     "size": "medium",
@@ -55,33 +56,34 @@ const outlander = {
     ]
 }
 
-const testData = [
-  {
-    "race": "Half-Orc",
-    "background": "Outerlander",
-    "class": {
-      "classname": "Barbarian",
-      "level": 1,
-      "subclass": null
-    },
-    "stats": {
-      "STR": 10,
-      "DEX": 7,
-      "CON": 18,
-      "INT": 9,
-      "WIS": 11,
-      "CHA": 12,
-      "AC": 8,
-      "HP": 14
-    },
-    "savingThrows": [],
-    "skillProficiencies": [],
-    "feats": [],
-    "spells": {
-      "cantrips": [],
-      "lvl1": [],
-      "lvl2": []
-    }
-  },
-  {}
-];
+// may be useful as a prototype later
+// const testData = [
+//   {
+//     "race": "Half-Orc",
+//     "background": "Outerlander",
+//     "class": {
+//       "classname": "Barbarian",
+//       "level": 1,
+//       "subclass": null
+//     },
+//     "stats": {
+//       "STR": 10,
+//       "DEX": 7,
+//       "CON": 18,
+//       "INT": 9,
+//       "WIS": 11,
+//       "CHA": 12,
+//       "AC": 8,
+//       "HP": 14
+//     },
+//     "savingThrows": [],
+//     "skillProficiencies": [],
+//     "feats": [],
+//     "spells": {
+//       "cantrips": [],
+//       "lvl1": [],
+//       "lvl2": []
+//     }
+//   },
+//   {}
+// ];

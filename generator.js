@@ -67,7 +67,7 @@ function displayCharacter(character) {
   const skillList = generateList(character.skillProficiencies);
   const featList = generateList(character.feats);
 
-  $('main').append(`
+  $('.character-info').html(`
     <h2>Race: ${character.race}</h2>
     <h3>Background: ${character.background}</h3>
     <p>
