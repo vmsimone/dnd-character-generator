@@ -21,6 +21,10 @@ function readyListeners() {
         generateCharacter(selectedRace, selectedBackground);
     });
     $('.dice-roller').on('click', rollStats);
+    $('.ability-score').on('click', function() {
+		let ability = $(this).val();
+		readySwap(ability);
+	});
 }
 
 function createFormLabels(fieldset, arr, name) {
@@ -39,6 +43,7 @@ function createFormLabels(fieldset, arr, name) {
 function loadPage() {
     createFormLabels('.js-race', RACES, 'race');
     createFormLabels('.js-background', BACKGROUNDS, 'background');
+    reassignStats();
     readyListeners();
 }
 

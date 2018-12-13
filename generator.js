@@ -32,12 +32,12 @@ function rollStats() {
 }
 
 function assignStats() {
-	const str = $('#stat-0').val();
-  	const dex = $('#stat-1').val();
-  	const con = $('#stat-2').val();
-  	const int = $('#stat-3').val();
-  	const wis = $('#stat-4').val();
-  	const cha = $('#stat-5').val();
+	const str = $('input.str').val();
+  	const dex = $('input.dex').val();
+  	const con = $('input.con').val();
+  	const int = $('input.int').val();
+  	const wis = $('input.wis').val();
+  	const cha = $('input.cha').val();
 
   return {
     "STR": calculateMod(str),
@@ -50,13 +50,41 @@ function assignStats() {
   }
 }
 
+//needs a better name
 function reassignStats() {
+  $('.ability-score').remove();
+
 	$('input.str').before('<button type="button" class="ability-score" value="str">STR</button>');
 	$('input.dex').before('<button type="button" class="ability-score" value="dex">DEX</button>');
 	$('input.con').before('<button type="button" class="ability-score" value="con">CON</button>');
 	$('input.int').before('<button type="button" class="ability-score" value="int">INT</button>');
 	$('input.wis').before('<button type="button" class="ability-score" value="wis">WIS</button>');
 	$('input.cha').before('<button type="button" class="ability-score" value="cha">CHA</button>');
+}
+
+function readySwap(ability) {
+  $('.ability-score').off('click');
+	$('.ability-score').on('click', function() {
+    let newAbility = $(this).val();
+		swapStats(ability, newAbility);
+  });
+}
+
+//needs better names
+function swapStats(original, substitute) {
+	const originalSelector = '#' + document.getElementsByClassName(original)[0].id;
+  const substituteSelector = '#' + document.getElementsByClassName(substitute)[0].id;
+
+  $(originalSelector).removeClass(original).addClass(substitute);
+  $(substituteSelector).removeClass(substitute).addClass(original);
+
+  reassignStats();
+	
+	$('.ability-score').off('click');
+	$('.ability-score').on('click', function() {
+		let ability = $(this).val();
+		readySwap(ability);
+  });
 }
 
 function generateCharacter(race, background) {
