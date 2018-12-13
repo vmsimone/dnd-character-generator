@@ -57,22 +57,6 @@ const RACES = [
         ]
     },
     {
-        "race": "Half-Orc",
-        "size": "medium",
-        "speed": 30,
-        "languages": ["Common", "Orc"],
-        "stats": {
-            "STR": 2,
-            "CON": 1
-        },
-        "proficiencies": ["Intimidation"],
-        "feats": [
-            "Darkvision – can see in dim light up to 60ft like bright light; can see in darkness like dim light",
-            "Relentless Endurance – when reduced to 0 hp and not killed, can drop to 1 hp instead. Once per long rest.",
-            "Savage Attacks – can add one extra damage die to melee weapon crits"
-        ]
-    },
-    {
         "race": "High_Elf",
         "size": "medium",
         "speed": 30,
@@ -175,6 +159,74 @@ const RACES = [
         ]
     },
     {
+        "race": "Halfling_(Lightfoot)",
+        "size": "small",
+        "speed": 25,
+        "languages": ["Common", "Halfling"],
+        "stats": {
+            "DEX": 2,
+            "CHA": 1
+        },
+        "proficiencies": [],
+        "feats": [
+            "Lucky – can reroll the die (once) after getting a 1 on an attack, check, or saving throw",
+            "Brave – advantage on saving throws against being frightened",
+            "Halfling Nimbleness. You can move through the space of any creature that is of a size larger than yours.",
+            "Naturally Stealthy. You can attempt to hide even when you are obscured only by a creature that is at least one size larger than you."
+        ]
+    },
+    {
+        "race": "Halfling_(Stout)",
+        "size": "small",
+        "speed": 25,
+        "languages": ["Common", "Halfling"],
+        "stats": {
+            "DEX": 2,
+            "CON": 1
+        },
+        "proficiencies": [],
+        "feats": [
+            "Lucky – can reroll the die (once) after getting a 1 on an attack, check, or saving throw",
+            "Brave – advantage on saving throws against being frightened",
+            "Halfling Nimbleness. You can move through the space of any creature that is of a size larger than yours.",
+            "Stout Resilience. You have advantage on saving throws against poison, and you have resistance against poison damage."
+        ]
+    },
+    {
+        "race": "Half-Elf",
+        "size": "medium",
+        "speed": 30,
+        "languages": ["Common", "Elvish", "any"],
+        "stats": {
+            "CHA": 2,
+            "ANY": 1,
+            "ANY": 1
+        },
+        "proficiencies": [
+            "Skill Versatility – proficient in any two skills"
+        ],
+        "feats": [
+            "Darkvision – can see in dim light up to 60ft like bright light; can see in darkness like dim light",
+            "Fey Ancestry – advantage on saves vs being charmed; can't be put to sleep by magic"
+        ]
+    },
+    {
+        "race": "Half-Orc",
+        "size": "medium",
+        "speed": 30,
+        "languages": ["Common", "Orc"],
+        "stats": {
+            "STR": 2,
+            "CON": 1
+        },
+        "proficiencies": ["Intimidation"],
+        "feats": [
+            "Darkvision – can see in dim light up to 60ft like bright light; can see in darkness like dim light",
+            "Relentless Endurance – when reduced to 0 hp and not killed, can drop to 1 hp instead. Once per long rest.",
+            "Savage Attacks – can add one extra damage die to melee weapon crits"
+        ]
+    },
+    {
         "race": "Human",
         "size": "medium",
         "speed": 30,
@@ -201,6 +253,22 @@ const RACES = [
         },
         "proficiencies": ["any skill/tool/kit"],
         "feats": ["any feat"]
+    },
+    {
+        "race": "Tiefling",
+        "size": "medium",
+        "speed": 30,
+        "languages": ["Common", "Infernal"],
+        "stats": {
+            "CHA": 2,
+            "INT": 1
+        },
+        "proficiencies": [],
+        "feats": [
+            "Darkvision – can see in dim light up to 60ft like bright light; can see in darkness like dim light",
+            "Hellish Resilience – resistance to fire damage",
+            "Infernal Legacy – Free spells, out of CHA:<br>Cantrip: thaumaturgy<br>(at 3rd level) Hellish Rebuke as 2nd level spell, once per day<br>(at 5th level) Darkness, once per day"
+        ]
     }
 ];
 

@@ -68,6 +68,7 @@ function readySwap(ability) {
     let newAbility = $(this).val();
 		swapStats(ability, newAbility);
   });
+  $('.ability-scores legend').after('<h3 class="swap-q">Swap with?</h3>');
 }
 
 //needs better names
@@ -85,6 +86,7 @@ function swapStats(original, substitute) {
 		let ability = $(this).val();
 		readySwap(ability);
   });
+  $('.swap-q').remove();
 }
 
 function generateCharacter(race, background) {
