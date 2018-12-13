@@ -254,7 +254,7 @@ const BACKGROUNDS = [
         ]
     },
     {
-        "background": "Folk Hero",
+        "background": "Folk_Hero",
         "proficiencies": ["Animal Handling", "Survival", "land vehicles", "Artisan’s Tools"],
         "languages": [],
         "equipment": ["artisan's tools", "shovel", "iron pot", "common clothes"],
@@ -265,7 +265,7 @@ const BACKGROUNDS = [
         ]
     },
     {
-        "background": "Guild Artisan",
+        "background": "Guild_Artisan",
         "proficiencies": ["Insight", "Persuasion", "Artisan’s Tools"],
         "languages": [],
         "equipment": ["artisan's tools", "letter of introduction from guild", "traveler's clothes"],

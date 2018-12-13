@@ -20,6 +20,7 @@ function readyListeners() {
 
         generateCharacter(selectedRace, selectedBackground);
     });
+    $('.dice-roller').on('click', rollStats);
 }
 
 function createFormLabels(fieldset, arr, name) {

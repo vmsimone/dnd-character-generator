@@ -24,12 +24,20 @@ function calculateMod(statLevel) {
 }
 
 function rollStats() {
-  const str = roll4add3();
-  const dex = roll4add3();
-  const con = roll4add3();
-  const int = roll4add3();
-  const wis = roll4add3();
-  const cha = roll4add3();
+  for(i=0; i <= 6; i++) {
+		let target = "#stat-" + i;
+		let defaultVal = roll4add3();
+		$(target).val(defaultVal);
+	}
+}
+
+function assignStats() {
+	const str = $('#stat-0').val();
+  	const dex = $('#stat-1').val();
+  	const con = $('#stat-2').val();
+  	const int = $('#stat-3').val();
+  	const wis = $('#stat-4').val();
+  	const cha = $('#stat-5').val();
 
   return {
     "STR": calculateMod(str),
@@ -40,6 +48,15 @@ function rollStats() {
     "CHA": calculateMod(cha),
     "AC": 10 + Math.floor((dex - 10) / 2)
   }
+}
+
+function reassignStats() {
+	$('input.str').before('<button type="button" class="ability-score" value="str">STR</button>');
+	$('input.dex').before('<button type="button" class="ability-score" value="dex">DEX</button>');
+	$('input.con').before('<button type="button" class="ability-score" value="con">CON</button>');
+	$('input.int').before('<button type="button" class="ability-score" value="int">INT</button>');
+	$('input.wis').before('<button type="button" class="ability-score" value="wis">WIS</button>');
+	$('input.cha').before('<button type="button" class="ability-score" value="cha">CHA</button>');
 }
 
 function generateCharacter(race, background) {
@@ -53,7 +70,7 @@ function generateCharacter(race, background) {
   //combined arrays we stored will fill in the missing items
   let character = Object.assign({}, race, background, combinedStats);
 
-  character.stats = rollStats();
+  character.stats = assignStats();
   displayCharacter(character);
 }
 
@@ -70,7 +87,7 @@ function displayCharacter(character) {
 
   $('.character-info').html(`
     <h2>Race: ${character.race.split('_').join(' ')}</h2>
-    <h3>Background: ${character.background}</h3>
+    <h3>Background: ${character.background.split('_').join(' ')}</h3>
     <p>
       STR: ${character.stats.STR.lvl}, ${character.stats.STR.mod}<br>
       DEX: ${character.stats.DEX.lvl}, ${character.stats.DEX.mod}<br>
