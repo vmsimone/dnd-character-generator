@@ -89,6 +89,25 @@ function swapStats(original, substitute) {
   $('.swap-q').remove();
 }
 
+function addRacialBonuses(baseStats, bonuses) {
+  let statSum = {};
+  Object.keys(baseStats).map(abilityScore => {
+    const baseAbility = baseStats[abilityScore];
+    const baseLevel = parseInt(baseAbility.lvl);
+    const bonusLevels = parseInt(bonuses[abilityScore]);
+
+    if(bonusLevels) {
+      console.log(abilityScore);
+      let summedLevel = baseLevel + bonusLevels;
+      statSum[abilityScore] = calculateMod(summedLevel);
+    } else {
+      statSum[abilityScore] = baseAbility;
+    }
+  });
+
+  return statSum;
+}
+
 function generateCharacter(race, background) {
   const languages = [...race.languages, ...background.languages];
   const proficiencies = [...race.proficiencies, ...background.proficiencies];
@@ -99,8 +118,9 @@ function generateCharacter(race, background) {
   
   //combined arrays we stored will fill in the missing items
   let character = Object.assign({}, race, background, combinedStats);
-
-  character.stats = assignStats();
+  const baseStats = assignStats();
+  character.stats = addRacialBonuses(baseStats, character.stats);
+  console.log(character.stats);
   displayCharacter(character);
 }
 
