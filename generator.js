@@ -14,9 +14,6 @@ function roll4add3() {
 
 function calculateMod(statLevel) {
   let modifier = Math.floor((statLevel - 10) / 2);
-  if(modifier > 0) {
-    modifier = "+" + modifier;
-  }
   return {
     "lvl": statLevel,
     "mod": modifier
@@ -68,7 +65,7 @@ function readySwap(ability) {
     let newAbility = $(this).val();
 		swapStats(ability, newAbility);
   });
-  $('.ability-scores legend').after('<h3 class="swap-q">Swap with?</h3>');
+  $('.ability-scores h3').text('Swap with?');
 }
 
 //needs better names
@@ -86,7 +83,7 @@ function swapStats(original, substitute) {
 		let ability = $(this).val();
 		readySwap(ability);
   });
-  $('.swap-q').remove();
+  $('.ability-scores h3').text('Click on an ability to swap it with another');
 }
 
 function addRacialBonuses(baseStats, bonuses) {
@@ -97,7 +94,6 @@ function addRacialBonuses(baseStats, bonuses) {
     const bonusLevels = parseInt(bonuses[abilityScore]);
 
     if(bonusLevels) {
-      console.log(abilityScore);
       let summedLevel = baseLevel + bonusLevels;
       statSum[abilityScore] = calculateMod(summedLevel);
     } else {
@@ -106,6 +102,42 @@ function addRacialBonuses(baseStats, bonuses) {
   });
 
   return statSum;
+}
+
+function assignSkillBonuses(characterProficiencies, abilityScores, proficiencyScore=0) {
+	const strMod = abilityScores.STR.mod;
+	const dexMod = abilityScores.DEX.mod;
+	const intMod = abilityScores.INT.mod;
+	const wisMod = abilityScores.WIS.mod;
+	const chaMod = abilityScores.CHA.mod;
+	
+	const skills = {
+		"Acrobatics": dexMod,
+		"Animal Handling": wisMod,
+		"Arcana": intMod,
+		"Athletics": strMod,
+		"Deception": chaMod,
+		"History": intMod,
+		"Insight": wisMod,
+		"Intimidation": chaMod,
+		"Investigation": intMod,
+		"Medicine": wisMod,
+		"Nature": intMod,
+		"Perception": wisMod,
+		"Performance": chaMod,
+		"Persuasion": chaMod,
+		"Religion": intMod,
+		"Sleight of Hand": dexMod,
+		"Stealth": dexMod,
+		"Survival": wisMod
+	}
+	
+	characterProficiencies.forEach(skill => {
+		if(skills[skill]) {
+			skills[skill] += proficiencyScore;	
+		}
+	});
+	return skills;
 }
 
 function generateCharacter(race, background) {
@@ -120,7 +152,8 @@ function generateCharacter(race, background) {
   let character = Object.assign({}, race, background, combinedStats);
   const baseStats = assignStats();
   character.stats = addRacialBonuses(baseStats, character.stats);
-  console.log(character.stats);
+  character.skills = assignSkillBonuses(character.proficiencies, character.stats, 0);
+
   displayCharacter(character);
 }
 
@@ -129,11 +162,23 @@ function generateList(arr) {
   return mappedArr.join('');
 }
 
+function generateSkillsList(skillsObj) {
+	let skillsArray = Object.keys(skillsObj);
+  let mappedArr = skillsArray.map(skillName => `<li>${skillName}: ${skillsObj[skillName]}</li>\n`);
+  return mappedArr.join('');
+}
+
 function displayCharacter(character) {
   const langList = generateList(character.languages);
-  const skillList = generateList(character.proficiencies);
+  const skillList = generateSkillsList(character.skills);
   const featList = generateList(character.feats);
   const equipment = generateList(character.equipment);
+
+    /*
+  if(modifier > 0) {
+    modifier = "+" + modifier;
+  }
+  */
 
   $('.character-info').html(`
     <h2>Race: ${character.race.split('_').join(' ')}</h2>
@@ -151,7 +196,7 @@ function displayCharacter(character) {
     <ul>
       ${langList}
     </ul>
-    <h4>Proficiencies:</h4>
+    <h4>Skills:</h4>
     <ul>
       ${skillList}
     </ul>

@@ -3,14 +3,20 @@ h2,
 h3,
 legend {
   font-family: 'Bentham', serif;
+  text-align: center;
 }
 
 legend {
   font-size: 24px;
 }
 
-fieldset {
+form {
   text-align: center;
+}
+
+fieldset {
+	padding-bottom: 30px;
+	margin: 10px;
 }
 
 .option {
@@ -19,6 +25,58 @@ fieldset {
   height: 20px;
   padding: 0;
   margin: 5px;
+}
+
+.ability-scores {
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* Hide HTML5 Up and Down arrows. */
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.ability-assigner {
+	display: inline-block;
+	max-width: 100px;
+	margin: 25px;
+	margin-bottom: 10px;
+}
+
+.ability-assigner input {
+	font-size: 48px;
+	text-align: center;
+	width: 100px;
+	border: 2px solid black;
+	border-top: none;
+	border-radius: 10px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	background: white;
+}
+
+.ability-score {
+	z-index: 0;
+	width: 104px;
+	position: static;
+	top: 20px;
+	border: 2px solid black;
+	border-radius: 10px;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	background: white;
+	font-size: 18px;
+}
+
+.ability-score:hover {
+	border-color: red;
+	color: red;
+	cursor: pointer;
 }
 
 label {
