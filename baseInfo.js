@@ -388,8 +388,10 @@ const BACKGROUNDS = [
 const CLASSES = [
     {
         "classname": "Barbarian",
+        "subclass": null,
         "hitDice": "d12",
         "HP": 12,
+        "proficiency-bonus": 0,
         "proficiencies": ["light and medium armor, shields", "simple and martial weapons"],
         "savingThrows": ["STR", "CON"],
         "skills": [2, ["Animal Handling", "Athletics", "Intimidation", "Nature", "Perception", "Survival"]],
@@ -401,11 +403,23 @@ const CLASSES = [
         ],
         "subClass": null,
         "level": 1,
-        "feats": {
-            "1": [],
-            "2": [],
-            "3": []
-        }
+        "secondLevelBonuses": {
+                
+            },
+        "subclassBonuses": [
+            {
+                "subclass": "Path of the Berserker",
+                "bonuses": [
+
+                ]
+            },
+            {
+                "subclass": "Totem Warrior",
+                "bonuses": [
+                    
+                ]
+            }
+        ]
     }
 ];
 
