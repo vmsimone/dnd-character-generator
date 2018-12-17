@@ -391,7 +391,7 @@ const CLASSES = [
         "subclass": null,
         "hitDice": "d12",
         "HP": 12,
-        "proficiency-bonus": 0,
+        "proficiency-bonus": 2,
         "proficiencies": ["light and medium armor, shields", "simple and martial weapons"],
         "savingThrows": ["STR", "CON"],
         "skills": [2, ["Animal Handling", "Athletics", "Intimidation", "Nature", "Perception", "Survival"]],
@@ -410,13 +410,67 @@ const CLASSES = [
             {
                 "subclass": "Path of the Berserker",
                 "bonuses": [
-
+                    {
+                        "feats": [
+                            "Frenzy – (rage buff) make a melee attack as a bonus action on each turn during frenzy. Suffer one lvl exhaustion after frenzy ends"
+                        ]
+                    }
                 ]
             },
             {
                 "subclass": "Totem Warrior",
                 "bonuses": [
-                    
+                    {
+                        "feats": [
+                            "Spirit Seeker – can cast beast sense and speak with animals as rituals",
+                            "Totem Spirit – Gain totem or features of animal of choice. Bonuses during rage based on animal type:<br>Bear – Very tough; resist all but psychic dmg<br>Eagle – other creatures have disadvantage on opportunity attacks against you. Can dash as bonus action<br>Wolf – friends have advantage on melee attacks against creatures w/in 5ft of you"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "classname": "Druid",
+        "subclass": null,
+        "hitDice": "d8",
+        "HP": 12,
+        "proficiency-bonus": 2,
+        "proficiencies": ["(non-metal) light and medium armor, shields", "clubs, daggers, darts, javelins, maces, quarterstaffs, scimitars, sickles, slings, spears","Herbalism kit"],
+        "savingThrows": ["INT", "WIS"],
+        "skills": [2, ["Animal Handling", "Insight", "Medicine", "Nature", "Perception", "Religion", "Survival"]],
+        "equipment": [
+            ["wooden shield", "simple weapon"], 
+            ["scimitar", "simple melee weapon"], 
+            "leather armor", 
+            "explorer’s pack", 
+            "druidic focus"
+        ],
+        "subClass": null,
+        "level": 1,
+        "secondLevelBonuses": {
+                
+            },
+        "subclassBonuses": [
+            {
+                "subclass": "Path of the Berserker",
+                "bonuses": [
+                    {
+                        "feats": [
+                            "Frenzy – (rage buff) make a melee attack as a bonus action on each turn during frenzy. Suffer one lvl exhaustion after frenzy ends"
+                        ]
+                    }
+                ]
+            },
+            {
+                "subclass": "Totem Warrior",
+                "bonuses": [
+                    {
+                        "feats": [
+                            "Spirit Seeker – can cast beast sense and speak with animals as rituals",
+                            "Totem Spirit – Gain totem or features of animal of choice. Bonuses during rage based on animal type:<br>Bear – Very tough; resist all but psychic dmg<br>Eagle – other creatures have disadvantage on opportunity attacks against you. Can dash as bonus action<br>Wolf – friends have advantage on melee attacks against creatures w/in 5ft of you"
+                        ]
+                    }
                 ]
             }
         ]

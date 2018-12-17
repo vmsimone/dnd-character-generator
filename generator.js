@@ -140,6 +140,10 @@ function assignSkillBonuses(characterProficiencies, abilityScores, proficiencySc
 	return skills;
 }
 
+function combineCharacterObjects(race, background, charClass) {
+
+}
+
 function generateCharacter(race, background) {
   const languages = [...race.languages, ...background.languages];
   const proficiencies = [...race.proficiencies, ...background.proficiencies];
