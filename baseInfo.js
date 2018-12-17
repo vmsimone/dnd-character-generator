@@ -401,10 +401,17 @@ const CLASSES = [
             "Explorer’s pack",
             "Javelins (4)"
         ],
+        "feats": [
+            "Rage (3 /long rest) – enter rage as bonus action in combat. No benefits w/ heavy armor, can’t cast spells, lasts 1m or until you are knocked out or leave combat. Can quit rage any time.<br>advantage on STR checks/saves<br>bonus damage on melee STR attacks (+2)<br>Resist bludgeoning, piercing, and slashing dmg",
+            "Unarmored Defense – AC = 10 + DEX + CON when unarmored, even w/ shield"
+        ],
         "subClass": null,
         "level": 1,
         "secondLevelBonuses": {
-                
+                "feats": [
+                    "Reckless Attack – first attack can give advantage on melee STR attack, but will give attacks against you advantage",
+                    "Danger Sense – advantage on DEX saves for unseen threats while aware of surroundings"
+                ]
             },
         "subclassBonuses": [
             {

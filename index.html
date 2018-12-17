@@ -11,7 +11,7 @@
   <body role="document">
     <main role="main" aria-live="assertive">
       <h1>D&D 5e Character Generator</h1>
-      <form class="character-generator" action="#">
+      <form class="character-generator" name="cg" action="#">
         <fieldset class="ability-scores">
           <legend>Enter or Randomize</legend>
           <h3>Click on an ability to swap it with another</h3>
@@ -44,6 +44,15 @@
 
         <fieldset class="js-background">
           <legend>Select Background:</legend>
+          <!-- HTML added by createFormLabels function -->
+        </fieldset>
+
+        <fieldset class="js-class">
+          <legend>Select Class and Level</legend>
+          <label for="class-level">
+            Level:
+            <input type="number" min="1" max="20" step="1" id="class-level">
+          </label>
           <!-- HTML added by createFormLabels function -->
         </fieldset>
         <br>
