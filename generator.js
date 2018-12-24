@@ -168,30 +168,38 @@ function generateSkillsList(skillsObj) {
   return mappedArr.join('');
 }
 
-function displayCharacter(character) {
-  const langList = generateList(character.languages);
-	const skillList = generateSkillsList(character.skills);
-  const featList = generateList(character.feats);
-  const equipment = generateList(character.equipment);
-	
-  /*
+function addPlusSign(modifier) {
   if(modifier > 0) {
     modifier = "+" + modifier;
   }
-  */
+  return modifier
+}
+
+function generateAbilityList(statsObj) {
+  const abilities = ['STR', 'DEX', 'CON', 'INT', 'WIS', 'CHA'];
+  let scoresAndMods = '<p>';
+
+  abilities.forEach(ability => {
+    let mod = addPlusSign(statsObj[ability].mod);
+    scoresAndMods += `${ability}: ${statsObj[ability].lvl}, ${mod}<br>`
+  });
+  
+  scoresAndMods += 'AC: ' + statsObj.AC
+  return `${scoresAndMods}</p>`;
+}
+
+function displayCharacter(character) {
+  const langList = generateList(character.languages);
+  const featList = generateList(character.feats);
+  const equipment = generateList(character.equipment);
+
+  const abilityList = generateAbilityList(character.stats);
+	const skillList = generateSkillsList(character.skills);
 
   $('.character-info').html(`
     <h2>Race: ${character.race.split('_').join(' ')}</h2>
     <h3>Background: ${character.background.split('_').join(' ')}</h3>
-    <p>
-      STR: ${character.stats.STR.lvl}, ${character.stats.STR.mod}<br>
-      DEX: ${character.stats.DEX.lvl}, ${character.stats.DEX.mod}<br>
-      CON: ${character.stats.CON.lvl}, ${character.stats.CON.mod}<br>
-      INT: ${character.stats.INT.lvl}, ${character.stats.INT.mod}<br>
-      WIS: ${character.stats.WIS.lvl}, ${character.stats.WIS.mod}<br>
-      CHA: ${character.stats.CHA.lvl}, ${character.stats.CHA.mod}<br>
-      AC: ${character.stats.AC}
-    </p>
+    ${abilityList}
     <h4>Languages:</h4>
     <ul>
       ${langList}

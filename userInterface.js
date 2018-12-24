@@ -132,9 +132,9 @@ function loadPage() {
     createFormLabels('.js-race', RACES, 'race');
     createFormLabels('.js-background', BACKGROUNDS, 'background');
     createFormLabels('.js-class', CLASSES, 'classname');
-    createClassListeners();
     reassignStats();
     readyListeners();
+    createClassListeners();
 }
 
 $(loadPage);
