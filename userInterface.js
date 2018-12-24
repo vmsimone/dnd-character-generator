@@ -30,6 +30,17 @@ function readyListeners() {
 	});
 }
 
+function createClassListeners() {
+    CLASSES.forEach(classObj => {
+        let classname = classObj.classname;
+        let classID = '#' + classname;
+
+        $(classID).on('change', () => {
+            loadClassForms(classObj);
+        });
+    });
+}
+
 function createFormLabels(fieldset, arr, name) {
     arr.forEach(obj => {
         $(fieldset).append(`
@@ -45,10 +56,8 @@ function createFormLabels(fieldset, arr, name) {
 
 function createEquipmentForm(classname) {
     const classEquipment = classname.equipment;
-    $('.js-class').after(`
-      <fieldset class='js-class-equipment'>
+    $('.js-class-equipment').html(`
         <legend>Select Class Equipment:</legend>
-      </fieldset>
     `);
     for(i=0; i<classEquipment.length; i++) {
         for(j=0; j<classEquipment[i].length; j++) {
@@ -72,7 +81,6 @@ function createEquipmentForm(classname) {
             }
         }
     }
-    chooseSkillsForm(classname);
 }
 
 function limitSkillSelection(max, thisSkill) {
@@ -83,18 +91,16 @@ function limitSkillSelection(max, thisSkill) {
 }
 
 function chooseSkillsForm(classname) {
-    $('.js-class-equipment').after(`
-      <fieldset class='js-class-skills'>
+    $('.js-class-skills').html(`
         <legend>Select ${classname.skills[0]} Class Skills</legend>
-      </fieldset>
     `);
     classname.skills[1].forEach(skill => {
         $('.js-class-skills').append(`
             <div class="option">
-            <input 
-                type="checkbox" 
-                name="skills" 
-                value=${skill} 
+            <input
+                type="checkbox"
+                name="skills"
+                value=${skill}
                 id=${skill}
                 onClick='limitSkillSelection(${classname.skills[0]}, $(this))'
             >
@@ -105,23 +111,28 @@ function chooseSkillsForm(classname) {
         `);
     });
 }
-  
-function chooseSubclassForm(classname) {
-    if(classname.level >= 3) {
-      $('.js-class-skills').after(`
-        <fieldset class='js-subclass'>
-            <legend>Select SubClass</legend>    
-        </fieldset>
-      `);
-    }
-    return classname;
+
+// function chooseSubclassForm(classname) {
+//     if(classname.level >= 3) {
+//       $('.js-class-skills').after(`
+//         <fieldset class='js-subclass'>
+//             <legend>Select SubClass</legend>
+//         </fieldset>
+//       `);
+//     }
+// }
+
+function loadClassForms(thisClass) {
+    $('.js-flex-field').show();
+    createEquipmentForm(thisClass);
+    chooseSkillsForm(thisClass);
 }
 
 function loadPage() {
     createFormLabels('.js-race', RACES, 'race');
     createFormLabels('.js-background', BACKGROUNDS, 'background');
     createFormLabels('.js-class', CLASSES, 'classname');
-    createEquipmentForm(CLASSES[0]);
+    createClassListeners();
     reassignStats();
     readyListeners();
 }
