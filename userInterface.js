@@ -18,8 +18,8 @@ function readyListeners() {
         let selectedBackground = document.querySelector('input[name="background"]:checked').value;
         selectedBackground = findMatchingObject(selectedBackground, BACKGROUNDS, "background");
 
-        let selectedClass = document.querySelector('input[name="charClass"]:checked').value;
-        selectedClass = findMatchingObject(selectedClass, CLASSES, "charClass");
+        let selectedClass = document.querySelector('input[name="classname"]:checked').value;
+        selectedClass = findMatchingObject(selectedClass, CLASSES, "classname");
 
         generateCharacter(selectedRace, selectedBackground);
     });
@@ -43,8 +43,8 @@ function createFormLabels(fieldset, arr, name) {
     });
 }
 
-function createEquipmentForm(charClass) {
-    const classEquipment = charClass.equipment;
+function createEquipmentForm(classname) {
+    const classEquipment = classname.equipment;
     $('.js-class').after(`
       <fieldset class='js-class-equipment'>
         <legend>Select Class Equipment:</legend>
@@ -62,8 +62,7 @@ function createEquipmentForm(charClass) {
                             type="radio" 
                             name=${inputName} 
                             value=${classEquipment[i][j]} 
-                            id=${uniqueName} 
-                            required
+                            id=${uniqueName}
                         >
                         <label for=${uniqueName}>
                             ${classEquipment[i][j]}
@@ -73,27 +72,23 @@ function createEquipmentForm(charClass) {
             }
         }
     }
-    chooseSkillsForm(charClass);
+    chooseSkillsForm(classname);
 }
 
-function limitSkillSelection(max) {
-    console.log('running');
-    $('input[type=checkbox]').on('change', (e) => {
-        let boxesChecked = $('input[type=checkbox]:checked').length;
-        if(boxesChecked >= max) {
-            this.checked = false;
-            console.log($('input[type=checkbox]:checked'));
-        }
-    });
+function limitSkillSelection(max, thisSkill) {
+    const checkedBoxes = $('input[name="skills"]:checked').length;
+    if(checkedBoxes > max) {
+        thisSkill.prop('checked', false);
+    }
 }
 
-function chooseSkillsForm(charClass) {
+function chooseSkillsForm(classname) {
     $('.js-class-equipment').after(`
       <fieldset class='js-class-skills'>
-        <legend>Select ${charClass.skills[0]} Class Skills</legend>
+        <legend>Select ${classname.skills[0]} Class Skills</legend>
       </fieldset>
     `);
-    charClass.skills[1].forEach(skill => {
+    classname.skills[1].forEach(skill => {
         $('.js-class-skills').append(`
             <div class="option">
             <input 
@@ -101,7 +96,7 @@ function chooseSkillsForm(charClass) {
                 name="skills" 
                 value=${skill} 
                 id=${skill}
-                required
+                onClick='limitSkillSelection(${classname.skills[0]}, $(this))'
             >
             <label for=${skill}>
                 ${skill}
@@ -109,18 +104,17 @@ function chooseSkillsForm(charClass) {
         </div>
         `);
     });
-    limitSkillSelection(charClass.skills[0]);
 }
   
-function chooseSubclassForm(charClass) {
-    if(charClass.level >= 3) {
+function chooseSubclassForm(classname) {
+    if(classname.level >= 3) {
       $('.js-class-skills').after(`
         <fieldset class='js-subclass'>
             <legend>Select SubClass</legend>    
         </fieldset>
       `);
     }
-    return charClass;
+    return classname;
 }
 
 function loadPage() {

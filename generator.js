@@ -140,19 +140,6 @@ function assignSkillBonuses(characterProficiencies, abilityScores, proficiencySc
 	return skills;
 }
 
-// function combineCharacterObjects(race, background, charClass) {
-//   const languages = [...race.languages, ...background.languages];
-//   const proficiencies = [...race.proficiencies, ...background.proficiencies];
-//   const feats = [...race.feats, ...background.feats];
-
-//   //stores combined arrays
-//   const combinedStats = {languages, proficiencies, feats}
-  
-//   //combined arrays we stored will fill in the missing items
-//   let character = Object.assign({}, race, background, combinedStats);
-//   const baseStats = assignStats();
-// }
-
 function generateCharacter(race, background) {
   const languages = [...race.languages, ...background.languages];
   const proficiencies = [...race.proficiencies, ...background.proficiencies];
@@ -165,8 +152,8 @@ function generateCharacter(race, background) {
   let character = Object.assign({}, race, background, combinedStats);
   const baseStats = assignStats();
   character.stats = addRacialBonuses(baseStats, character.stats);
-  character.skills = assignSkillBonuses(character.proficiencies, character.stats, 0);
-
+  character.skills = assignSkillBonuses(character.proficiencies, character.stats, 3);
+  
   displayCharacter(character);
 }
 
@@ -183,11 +170,11 @@ function generateSkillsList(skillsObj) {
 
 function displayCharacter(character) {
   const langList = generateList(character.languages);
-  const skillList = generateSkillsList(character.skills);
+	const skillList = generateSkillsList(character.skills);
   const featList = generateList(character.feats);
   const equipment = generateList(character.equipment);
-
-    /*
+	
+  /*
   if(modifier > 0) {
     modifier = "+" + modifier;
   }
