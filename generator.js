@@ -88,7 +88,7 @@ function swapStats(original, substitute) {
 
 function addRacialBonuses(baseStats, bonuses) {
   let statSum = {};
-  Object.keys(baseStats).map(abilityScore => {
+  Object.keys(baseStats).forEach(abilityScore => {
     const baseAbility = baseStats[abilityScore];
     const baseLevel = parseInt(baseAbility.lvl);
     const bonusLevels = parseInt(bonuses[abilityScore]);
@@ -162,17 +162,19 @@ function generateList(arr) {
   return mappedArr.join('');
 }
 
-function generateSkillsList(skillsObj) {
-	let skillsArray = Object.keys(skillsObj);
-  let mappedArr = skillsArray.map(skillName => `<li>${skillName}: ${skillsObj[skillName]}</li>\n`);
-  return mappedArr.join('');
-}
-
 function addPlusSign(modifier) {
   if(modifier > 0) {
     modifier = "+" + modifier;
   }
   return modifier
+}
+
+function generateSkillsList(skillsObj) {
+  let skillsArray = Object.keys(skillsObj);
+  let mappedArr = skillsArray.map(skillName => 
+    `<li>${skillName}: ${addPlusSign(skillsObj[skillName])}</li>\n`
+  );
+  return mappedArr.join('');
 }
 
 function generateAbilityList(statsObj) {
