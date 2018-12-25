@@ -140,10 +140,18 @@ function assignSkillBonuses(characterProficiencies, abilityScores, proficiencySc
 	return skills;
 }
 
-function generateCharacter(race, background) {
-  const languages = [...race.languages, ...background.languages];
-  const proficiencies = [...race.proficiencies, ...background.proficiencies];
-  const feats = [...race.feats, ...background.feats];
+function mergeArrays(arr1, arr2, arr3=null) {
+  if(arr3) {
+    return [...arr1, ...arr2, ...arr3];
+  } else {
+    return [...arr1, ...arr2];
+  }
+}
+
+function generateCharacter(race, background, classname) {
+  const languages = mergeArrays(race.languages, background.languages, classname.languages);
+  const proficiencies = mergeArrays(race.proficiencies, background.proficiencies, classname.proficiencies);
+  const feats = mergeArrays(race.feats, background.feats, classname.feats);
 
   //stores combined arrays
   const combinedStats = {languages, proficiencies, feats}

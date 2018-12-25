@@ -89,18 +89,21 @@ label {
   text-align: center;
 }
 
-label:hover {
+label:hover,
+input[type='checkbox']:focus + label {
   border-color: red;
   color: red;
   cursor: pointer;
 }
 
-input[type='radio'] {
+input[type='radio'],
+input[type='checkbox'] {
   opacity: 0;
   width: 0;
 }
 
-input[type='radio']:checked + label {
+input[type='radio']:checked + label,
+input[type='checkbox']:checked + label {
   background: lightgreen;
   border-color: black;
   color: black;

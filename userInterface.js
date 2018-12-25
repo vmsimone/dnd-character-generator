@@ -21,7 +21,7 @@ function readyListeners() {
         let selectedClass = document.querySelector('input[name="classname"]:checked').value;
         selectedClass = findMatchingObject(selectedClass, CLASSES, "classname");
 
-        generateCharacter(selectedRace, selectedBackground);
+        generateCharacter(selectedRace, selectedBackground, selectedClass);
     });
     $('.dice-roller').on('click', rollStats);
     $('.ability-score').on('click', function() {
