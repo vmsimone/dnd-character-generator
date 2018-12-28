@@ -80,7 +80,12 @@ function createEquipmentForm(classname) {
                 `);
             }
         }
+        //avoids excess asterisks at the end
+        if(classEquipment[i][0].length > 1) {
+            $('.js-class-equipment').append(`<p>*****</p>`);
+        }
     }
+    $('.js-class-equipment').children().last().remove();
 }
 
 function limitSkillSelection(max, thisSkill) {

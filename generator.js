@@ -173,7 +173,7 @@ function generateCharacter(race, background, classname) {
   const combinedStats = {languages, proficiencies, feats, equipment}
   
   //combined arrays we stored will fill in the missing items
-  let character = Object.assign({}, race, background, combinedStats);
+  let character = Object.assign({}, race, background, classname, combinedStats);
   const baseStats = assignStats();
   character.stats = addRacialBonuses(baseStats, character.stats);
   character.skills = assignSkillBonuses(character.proficiencies, character.stats, 3);
@@ -218,13 +218,18 @@ function displayCharacter(character) {
   const langList = generateList(character.languages);
   const featList = generateList(character.feats);
   const equipment = generateList(character.equipment);
+  const HP = character.HP + character.stats.CON.mod;
+  console.log(character.HP);
+  console.log(character.stats.CON.mod);
 
   const abilityList = generateAbilityList(character.stats);
-	const skillList = generateSkillsList(character.skills);
+  const skillList = generateSkillsList(character.skills);
 
   $('.character-info').html(`
     <h2>Race: ${character.race.split('_').join(' ')}</h2>
     <h3>Background: ${character.background.split('_').join(' ')}</h3>
+    <h4>HP: ${HP}</h4>
+    <h4>Initiative: ${addPlusSign(character.stats.DEX.mod)}</h4>
     ${abilityList}
     <h4>Languages:</h4>
     <ul>

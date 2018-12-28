@@ -384,7 +384,7 @@ const BACKGROUNDS = [
     }
 ];
 
-//classes not yet utilized
+//classes after first two have had level-ups and subclasses dropped for now
 const CLASSES = [
     {
         "classname": "Barbarian",
@@ -438,6 +438,55 @@ const CLASSES = [
         ]
     },
     {
+        "classname": "Bard",
+        "subclass": null,
+        "hitDice": "d8",
+        "HP": 8,
+        "proficiency-bonus": 2,
+        "proficiencies": [
+            "light armor", 
+            "hand crossbows, longswords, rapiers, shortswords", 
+            "Three musical instruments"
+        ],
+        "savingThrows": ["DEX", "CON"],
+        "skills": [
+            3, 
+            [
+                "Acrobatics",
+                "Animal Handling",
+                "Arcana",
+                "Athletics",
+                "Deception",
+                "History",
+                "Insight",
+                "Intimidation",
+                "Investigation",
+                "Medicine",
+                "Nature",
+                "Perception",
+                "Performance",
+                "Persuasion",
+                "Religion",
+                "Sleight of Hand",
+                "Stealth",
+                "Survival"
+            ]
+        ],
+        "equipment": [
+            ["rapier", "longsword", "simple weapon"], 
+            ["diplomat's pack", "entertainer's pack"],
+            "a musical instrument",
+            "leather armor",
+            "dagger"
+        ],
+        "feats": [
+            "Bardic Inspiration (CHA /long rest) – bonus action can give any creature that can hear you (60ft) a d6 to spend w/in 10m. Can be added to any check roll, or save after the d20 roll, but before stating success/failure", 
+            "Jack of All Trades – add half proficiency (rounded down) to any check you’re not proficient in",
+            "Song of Rest"
+        ],
+        "level": 1
+    },
+    {
         "classname": "Druid",
         "subclass": null,
         "hitDice": "d8",
@@ -481,6 +530,55 @@ const CLASSES = [
                 ]
             }
         ]
+    },
+    {
+        "classname": "Bard",
+        "subclass": null,
+        "hitDice": "d8",
+        "HP": 8,
+        "proficiency-bonus": 2,
+        "proficiencies": [
+            "light armor", 
+            "hand crossbows, longswords, rapiers, shortswords", 
+            "Three musical instruments"
+        ],
+        "savingThrows": ["DEX", "CON"],
+        "skills": [
+            3, 
+            [
+                "Acrobatics",
+                "Animal Handling",
+                "Arcana",
+                "Athletics",
+                "Deception",
+                "History",
+                "Insight",
+                "Intimidation",
+                "Investigation",
+                "Medicine",
+                "Nature",
+                "Perception",
+                "Performance",
+                "Persuasion",
+                "Religion",
+                "Sleight of Hand",
+                "Stealth",
+                "Survival"
+            ]
+        ],
+        "equipment": [
+            ["rapier", "longsword", "simple weapon"], 
+            ["diplomat's pack", "entertainer's pack"],
+            "a musical instrument",
+            "leather armor",
+            "dagger"
+        ],
+        "feats": [
+            "Bardic Inspiration (CHA /long rest) – bonus action can give any creature that can hear you (60ft) a d6 to spend w/in 10m. Can be added to any check roll, or save after the d20 roll, but before stating success/failure", 
+            "Jack of All Trades – add half proficiency (rounded down) to any check you’re not proficient in",
+            "Song of Rest"
+        ],
+        "level": 1
     }
 ];
 
