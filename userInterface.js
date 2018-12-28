@@ -45,8 +45,8 @@ function createFormLabels(fieldset, arr, name) {
     arr.forEach(obj => {
         $(fieldset).append(`
             <div class="option">
-                <input type="radio" name=${name} value=${obj[name]} id=${obj[name]} required>
-                <label for=${obj[name]}>
+                <input type="radio" name="${name}" value="${obj[name]}" id="${obj[name]}" required>
+                <label for="${obj[name]}">
                     ${obj[name].split('_').join(' ')}
                 </label>
             </div>
@@ -69,11 +69,11 @@ function createEquipmentForm(classname) {
                     <div class="option">
                         <input 
                             type="radio" 
-                            name=${inputName} 
-                            value=${classEquipment[i][j]} 
-                            id=${uniqueName}
-                        >
-                        <label for=${uniqueName}>
+                            name="${inputName}"
+                            value="${classEquipment[i][j]}" 
+                            id="${uniqueName}"
+                        />
+                        <label for="${uniqueName}">
                             ${classEquipment[i][j]}
                         </label>
                     </div>
@@ -100,11 +100,11 @@ function chooseSkillsForm(classname) {
             <input
                 type="checkbox"
                 name="skills"
-                value=${skill}
-                id=${skill}
+                value="${skill}"
+                id="${skill}"
                 onClick='limitSkillSelection(${classname.skills[0]}, $(this))'
             >
-            <label for=${skill}>
+            <label for="${skill}">
                 ${skill}
             </label>
         </div>

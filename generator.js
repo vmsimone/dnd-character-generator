@@ -148,13 +148,29 @@ function mergeArrays(arr1, arr2, arr3=null) {
   }
 }
 
+function mergeEquipment(backgroundEquipment, classEquipment) {
+  let selectedEquipment = [];
+  for(i=0; i < classEquipment.length; i++) {
+    //for equipment that the user must select, there will be an array
+    if(classEquipment[i][0].length > 1) {
+      let selectedItem = $(`input[name="equip-opt-${i}"]:checked`).val();
+      selectedEquipment.push(selectedItem);
+      //some equipment is always given to a certain class
+    } else {
+      selectedEquipment.push(classEquipment[i]);
+    }
+  }
+  return [...backgroundEquipment, ...selectedEquipment];
+}
+
 function generateCharacter(race, background, classname) {
   const languages = mergeArrays(race.languages, background.languages, classname.languages);
   const proficiencies = mergeArrays(race.proficiencies, background.proficiencies, classname.proficiencies);
   const feats = mergeArrays(race.feats, background.feats, classname.feats);
+  const equipment = mergeEquipment(background.equipment, classname.equipment);
 
   //stores combined arrays
-  const combinedStats = {languages, proficiencies, feats}
+  const combinedStats = {languages, proficiencies, feats, equipment}
   
   //combined arrays we stored will fill in the missing items
   let character = Object.assign({}, race, background, combinedStats);
