@@ -384,28 +384,226 @@ const BACKGROUNDS = [
     }
 ];
 
-//classes not yet utilized
+//classes after first two have had level-ups and subclasses dropped for now
 const CLASSES = [
     {
         "classname": "Barbarian",
+        "subclass": null,
         "hitDice": "d12",
         "HP": 12,
+        "proficiency-bonus": 2,
         "proficiencies": ["light and medium armor, shields", "simple and martial weapons"],
         "savingThrows": ["STR", "CON"],
-        "skills": [2, ["Animal Handling", "Athletics", "Intimidation", "Nature", "Perception", "Survival"]],
+        "skills": [
+            2, 
+            ["Animal Handling", 
+            "Athletics", 
+            "Intimidation", 
+            "Nature", 
+            "Perception", 
+            "Survival"]
+        ],
         "equipment": [
             ["greataxe", "martial melee weapon"], 
             ["two handaxes", "simple weapon"], 
             "Explorer’s pack",
             "Javelins (4)"
         ],
+        "feats": [
+            "Rage (3 /long rest) – enter rage as bonus action in combat. No benefits w/ heavy armor, can’t cast spells, lasts 1m or until you are knocked out or leave combat. Can quit rage any time.<br>advantage on STR checks/saves<br>bonus damage on melee STR attacks (+2)<br>Resist bludgeoning, piercing, and slashing dmg",
+            "Unarmored Defense – AC = 10 + DEX + CON when unarmored, even w/ shield"
+        ],
         "subClass": null,
         "level": 1,
-        "feats": {
-            "1": [],
-            "2": [],
-            "3": []
-        }
+        "secondLevelBonuses": {
+                "feats": [
+                    "Reckless Attack – first attack can give advantage on melee STR attack, but will give attacks against you advantage",
+                    "Danger Sense – advantage on DEX saves for unseen threats while aware of surroundings"
+                ]
+            },
+        "subclassBonuses": [
+            {
+                "subclass": "Path of the Berserker",
+                "bonuses": [
+                    {
+                        "feats": [
+                            "Frenzy – (rage buff) make a melee attack as a bonus action on each turn during frenzy. Suffer one lvl exhaustion after frenzy ends"
+                        ]
+                    }
+                ]
+            },
+            {
+                "subclass": "Totem Warrior",
+                "bonuses": [
+                    {
+                        "feats": [
+                            "Spirit Seeker – can cast beast sense and speak with animals as rituals",
+                            "Totem Spirit – Gain totem or features of animal of choice. Bonuses during rage based on animal type:<br>Bear – Very tough; resist all but psychic dmg<br>Eagle – other creatures have disadvantage on opportunity attacks against you. Can dash as bonus action<br>Wolf – friends have advantage on melee attacks against creatures w/in 5ft of you"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "classname": "Bard",
+        "subclass": null,
+        "hitDice": "d8",
+        "HP": 8,
+        "proficiency-bonus": 2,
+        "proficiencies": [
+            "light armor", 
+            "hand crossbows, longswords, rapiers, shortswords", 
+            "Three musical instruments"
+        ],
+        "savingThrows": ["DEX", "CON"],
+        "skills": [
+            3, 
+            [
+                "Acrobatics",
+                "Animal Handling",
+                "Arcana",
+                "Athletics",
+                "Deception",
+                "History",
+                "Insight",
+                "Intimidation",
+                "Investigation",
+                "Medicine",
+                "Nature",
+                "Perception",
+                "Performance",
+                "Persuasion",
+                "Religion",
+                "Sleight of Hand",
+                "Stealth",
+                "Survival"
+            ]
+        ],
+        "equipment": [
+            ["rapier", "longsword", "simple weapon"], 
+            ["diplomat's pack", "entertainer's pack"],
+            "a musical instrument",
+            "leather armor",
+            "dagger"
+        ],
+        "feats": [
+            "Bardic Inspiration (CHA /long rest) – bonus action can give any creature that can hear you (60ft) a d6 to spend w/in 10m. Can be added to any check roll, or save after the d20 roll, but before stating success/failure", 
+            "Jack of All Trades – add half proficiency (rounded down) to any check you’re not proficient in",
+            "Song of Rest"
+        ],
+        "level": 1
+    },
+    {
+        "classname": "Cleric",
+        "subclass": null,
+        "hitDice": "d8",
+        "HP": 8,
+        "proficiency-bonus": 2,
+        "proficiencies": [
+            "light and medium armor, shields", 
+            "all simple weapons"
+        ],
+        "savingThrows": ["WIS", "CHA"],
+        "skills": [
+            2, 
+            [
+                "History", 
+                "Insight", 
+                "Medicine", 
+                "Persuasion", 
+                "Religion"
+            ]
+        ],
+        "equipment": [
+            ["a mace", "a warhammer"], 
+            ["scale mail", "leather armor", "chain mail"],
+            ["light crossbow + 20 bolts", "simple weapon"],
+            ["priest's pack", "explorer's pack"],
+            "shield",
+            "holy symbol"
+        ],
+        "feats": [
+            "Channel Divinity (once / rest): can use one of the following effects by channeling divine energy",
+            "Turn Undead – Present holy symbol as an action. Each undead that perceives you must make a WIS saving throw or be turned for 1 minute (or until taking damage). Turned creatures can only try to escape during their turn and won’t willingly move w/in 30 ft of you"
+        ],
+        "subClass": null,
+        "level": 1
+    },
+    {
+        "classname": "Druid",
+        "subclass": null,
+        "hitDice": "d8",
+        "HP": 8,
+        "languages": [
+            "Druidic"
+        ],
+        "proficiency-bonus": 2,
+        "proficiencies": [
+            "(non-metal) light and medium armor, shields", 
+            "clubs, daggers, darts, javelins, maces, quarterstaffs, scimitars, sickles, slings, spears",
+            "Herbalism kit"
+        ],
+        "savingThrows": ["INT", "WIS"],
+        "skills": [
+            2, [
+                "Animal Handling", 
+                "Insight", 
+                "Medicine", 
+                "Nature", 
+                "Perception", 
+                "Religion", 
+                "Survival"
+            ]
+        ],
+        "equipment": [
+            ["wooden shield", "simple weapon"], 
+            ["scimitar", "simple melee weapon"], 
+            "leather armor", 
+            "explorer’s pack", 
+            "druidic focus"
+        ],
+        "feats": [
+            "Wild Shape (2 / rest): Can magically change into a land beast (Max CR ¼) you have seen for ½ druid level hours or until reverting (bonus action)"
+        ],
+        "subClass": null,
+        "level": 1
+    },
+    {
+        "classname": "Fighter",
+        "subclass": null,
+        "hitDice": "d10",
+        "HP": 10,
+        "proficiency-bonus": 2,
+        "proficiencies": [
+            "all armor, shields", 
+            "simple weapons, martial weapons"
+        ],
+        "savingThrows": ["STR", "CON"],
+        "skills": [
+            2, 
+            [
+                "Acrobatics",
+                "Animal Handling",
+                "Athletics",
+                "History",
+                "Insight",
+                "Perception",
+                "Survival"
+            ]
+        ],
+        "equipment": [
+            ["chain mail", "leather armor, longbow + 20 arrows"], 
+            ["martial weapon and shield", "two martial weapons"],
+            ["light crossbow + 20 bolts", "two handaxes"],
+            ["dungeoneer's pack", "explorer's pack"]
+        ],
+        "feats": [
+            "Fighting Style:<br>Archery – bonus +2 to atk rolls w/ ranged weapons<br>Defense – gain +1 AC while wearing armor<br>Dueling – bonus +2 dmg to attack rolls when wielding single melee weapon<br>Great Weapon Fighting – can reroll dmg dice for 2h weapon if rolling a 1 or 2<br>Protection – can impose disadvantage on creature attacking target w/in 5ft if wielding a shield<br>Two-Weapon Fighting – add ability mod to dmg of second atk when dual wielding",
+            "Second Wind (once / rest): can use bonus action to regain 1d10 + lvl hp using stamina well.",
+            "Action Surge (once / rest): can take additional action and possible bonus action"
+        ],
+        "level": 1
     }
 ];
 

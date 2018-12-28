@@ -88,7 +88,7 @@ function swapStats(original, substitute) {
 
 function addRacialBonuses(baseStats, bonuses) {
   let statSum = {};
-  Object.keys(baseStats).map(abilityScore => {
+  Object.keys(baseStats).forEach(abilityScore => {
     const baseAbility = baseStats[abilityScore];
     const baseLevel = parseInt(baseAbility.lvl);
     const bonusLevels = parseInt(bonuses[abilityScore]);
@@ -140,20 +140,44 @@ function assignSkillBonuses(characterProficiencies, abilityScores, proficiencySc
 	return skills;
 }
 
-function generateCharacter(race, background) {
-  const languages = [...race.languages, ...background.languages];
-  const proficiencies = [...race.proficiencies, ...background.proficiencies];
-  const feats = [...race.feats, ...background.feats];
+function mergeArrays(arr1, arr2, arr3=null) {
+  if(arr3) {
+    return [...arr1, ...arr2, ...arr3];
+  } else {
+    return [...arr1, ...arr2];
+  }
+}
+
+function mergeEquipment(backgroundEquipment, classEquipment) {
+  let selectedEquipment = [];
+  for(i=0; i < classEquipment.length; i++) {
+    //for equipment that the user must select, there will be an array
+    if(classEquipment[i][0].length > 1) {
+      let selectedItem = $(`input[name="equip-opt-${i}"]:checked`).val();
+      selectedEquipment.push(selectedItem);
+      //some equipment is always given to a certain class
+    } else {
+      selectedEquipment.push(classEquipment[i]);
+    }
+  }
+  return [...backgroundEquipment, ...selectedEquipment];
+}
+
+function generateCharacter(race, background, classname) {
+  const languages = mergeArrays(race.languages, background.languages, classname.languages);
+  const proficiencies = mergeArrays(race.proficiencies, background.proficiencies, classname.proficiencies);
+  const feats = mergeArrays(race.feats, background.feats, classname.feats);
+  const equipment = mergeEquipment(background.equipment, classname.equipment);
 
   //stores combined arrays
-  const combinedStats = {languages, proficiencies, feats}
+  const combinedStats = {languages, proficiencies, feats, equipment}
   
   //combined arrays we stored will fill in the missing items
-  let character = Object.assign({}, race, background, combinedStats);
+  let character = Object.assign({}, race, background, classname, combinedStats);
   const baseStats = assignStats();
   character.stats = addRacialBonuses(baseStats, character.stats);
-  character.skills = assignSkillBonuses(character.proficiencies, character.stats, 0);
-
+  character.skills = assignSkillBonuses(character.proficiencies, character.stats, 3);
+  
   displayCharacter(character);
 }
 
@@ -162,36 +186,49 @@ function generateList(arr) {
   return mappedArr.join('');
 }
 
+function addPlusSign(modifier) {
+  if(modifier > 0) {
+    modifier = "+" + modifier;
+  }
+  return modifier
+}
+
 function generateSkillsList(skillsObj) {
-	let skillsArray = Object.keys(skillsObj);
-  let mappedArr = skillsArray.map(skillName => `<li>${skillName}: ${skillsObj[skillName]}</li>\n`);
+  let skillsArray = Object.keys(skillsObj);
+  let mappedArr = skillsArray.map(skillName => 
+    `<li>${skillName}: ${addPlusSign(skillsObj[skillName])}</li>\n`
+  );
   return mappedArr.join('');
+}
+
+function generateAbilityList(statsObj) {
+  const abilities = ['STR', 'DEX', 'CON', 'INT', 'WIS', 'CHA'];
+  let scoresAndMods = '<p>';
+
+  abilities.forEach(ability => {
+    let mod = addPlusSign(statsObj[ability].mod);
+    scoresAndMods += `${ability}: ${statsObj[ability].lvl}, ${mod}<br>`
+  });
+  
+  scoresAndMods += 'AC: ' + statsObj.AC
+  return `${scoresAndMods}</p>`;
 }
 
 function displayCharacter(character) {
   const langList = generateList(character.languages);
-  const skillList = generateSkillsList(character.skills);
   const featList = generateList(character.feats);
   const equipment = generateList(character.equipment);
+  const HP = character.HP + character.stats.CON.mod;
 
-    /*
-  if(modifier > 0) {
-    modifier = "+" + modifier;
-  }
-  */
+  const abilityList = generateAbilityList(character.stats);
+  const skillList = generateSkillsList(character.skills);
 
   $('.character-info').html(`
-    <h2>Race: ${character.race.split('_').join(' ')}</h2>
+    <h2>${character.race.split('_').join(' ')} ${character.classname} </h2>
     <h3>Background: ${character.background.split('_').join(' ')}</h3>
-    <p>
-      STR: ${character.stats.STR.lvl}, ${character.stats.STR.mod}<br>
-      DEX: ${character.stats.DEX.lvl}, ${character.stats.DEX.mod}<br>
-      CON: ${character.stats.CON.lvl}, ${character.stats.CON.mod}<br>
-      INT: ${character.stats.INT.lvl}, ${character.stats.INT.mod}<br>
-      WIS: ${character.stats.WIS.lvl}, ${character.stats.WIS.mod}<br>
-      CHA: ${character.stats.CHA.lvl}, ${character.stats.CHA.mod}<br>
-      AC: ${character.stats.AC}
-    </p>
+    <h4>HP: ${HP}</h4>
+    <h4>Initiative: ${addPlusSign(character.stats.DEX.mod)}</h4>
+    ${abilityList}
     <h4>Languages:</h4>
     <ul>
       ${langList}
