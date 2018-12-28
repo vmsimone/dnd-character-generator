@@ -22,6 +22,10 @@ function readyListeners() {
         selectedClass = findMatchingObject(selectedClass, CLASSES, "classname");
 
         generateCharacter(selectedRace, selectedBackground, selectedClass);
+
+        $('html, body').animate({
+            scrollTop: $('.character-info').offset().top
+        }, 500);
     });
     $('.dice-roller').on('click', rollStats);
     $('.ability-score').on('click', function() {

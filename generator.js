@@ -219,14 +219,12 @@ function displayCharacter(character) {
   const featList = generateList(character.feats);
   const equipment = generateList(character.equipment);
   const HP = character.HP + character.stats.CON.mod;
-  console.log(character.HP);
-  console.log(character.stats.CON.mod);
 
   const abilityList = generateAbilityList(character.stats);
   const skillList = generateSkillsList(character.skills);
 
   $('.character-info').html(`
-    <h2>Race: ${character.race.split('_').join(' ')}</h2>
+    <h2>${character.race.split('_').join(' ')} ${character.classname} </h2>
     <h3>Background: ${character.background.split('_').join(' ')}</h3>
     <h4>HP: ${HP}</h4>
     <h4>Initiative: ${addPlusSign(character.stats.DEX.mod)}</h4>
