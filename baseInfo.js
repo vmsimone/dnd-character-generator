@@ -604,6 +604,243 @@ const CLASSES = [
             "Action Surge (once / rest): can take additional action and possible bonus action"
         ],
         "level": 1
+    },
+    {
+        "classname": "Monk",
+        "subclass": null,
+        "hitDice": "d8",
+        "HP": 8,
+        "proficiency-bonus": 2,
+        "proficiencies": [
+            "simple weapons, shortswords", 
+            "artisan's tools or one musical instrument"
+        ],
+        "savingThrows": ["STR", "DEX"],
+        "skills": [
+            2, 
+            [
+                "Acrobatics",
+                "Athletics",
+                "History",
+                "Insight",
+                "Religion",
+                "Stealth"
+            ]
+        ],
+        "equipment": [
+            ["shortsword", "simple weapon"], 
+            ["dungeoneer's pack", "explorer's pack"],
+            "10 darts"
+        ],
+        "feats": [
+            "Unarmored Defense – AC = 10 + DEX + CON when unarmored, even w/ shield",
+            "Martial Arts – mastery of combat styles that use unarmed strikes and monk weapons, which are shortswords and any simple melee weapons that don’t have the two-handed or heavy property. Certain monasteries use specialized forms of the monk weapons, e.g. nunchaku or kama. <br>You gain the following benefits while you are unarmed or wielding only monk weapons (shortswords and any simple melee weapons that don’t have the two-handed or heavy) and you don’t have armor or a shield equipped:<br>You can use Dexterity instead of Strength for the attack and damage rolls of your unarmed strikes and monk weapons.<br>You can roll a d4 in place of the normal damage of your unarmed strike or monk weapon.<br>When you use the Attack action with an unarmed strike or a monk weapon on your turn, you can make one unarmed strike as a bonus action. if you haven't already taken a bonus action this turn."
+        ],
+        "level": 1
+    },
+    {
+        "classname": "Paladin",
+        "subclass": null,
+        "hitDice": "d10",
+        "HP": 10,
+        "proficiency-bonus": 2,
+        "proficiencies": [
+            "All armor, shields", 
+            "simple and martial weapons"
+        ],
+        "savingThrows": ["WIS", "CHA"],
+        "skills": [
+            2, 
+            [
+                "Athletics",
+                "Insight",
+                "Intimidation",
+                "Medicine",
+                "Persuasion",
+                "Religion"
+            ]
+        ],
+        "equipment": [
+            ["a martial weapon and shield", "two martial weapons"], 
+            ["five javelins", "simple weapon"],
+            ["priest's pack", "explorer's pack"],
+            "chain mail",
+            "a holy symbol"
+        ],
+        "feats": [
+            "Divine Sense (1 + CHA / long rest) – The presence of strong evil registers on your senses like a noxious odor, and powerful good rings like heavenly music in your ears. As an action, you can open your awareness to detect such forces. Until the end of your next turn, you know the location of any celestial, fiend, or undead within 60 feet of you that is not behind total cover. You know their type, but not their identity. Within the same radius, you also detect the presence of any place or object that has been consecrated or desecrated.",
+            "Lay on Hands – Your blessed touch can heal wounds. You have a pool of healing power that replenishes when you take a long rest. With that pool, you can restore a total number of hit points equal to your paladin level x 5. As an action, you can touch a creature and draw power from the pool to restore a number of hit points to that creature, up to the maximum amount remaining in your pool. Alternatively, you can expend 5 hit points from your pool of healing to cure the target of one disease or neutralize one poison affecting it. You can cure multiple diseases and neutralize multiple poisons with a single use of Lay on Hands, expending hit points separately for each one. This feature has no effect on undead and constructs."
+        ],
+        "level": 1
+    },
+    {
+        "classname": "Ranger",
+        "subclass": null,
+        "hitDice": "d10",
+        "HP": 10,
+        "proficiency-bonus": 2,
+        "proficiencies": [
+            "light and medium armor, shields",
+            "simple and martial weapons"
+        ],
+        "savingThrows": ["STR", "DEX"],
+        "skills": [
+            3, 
+            [
+                "Animal Handling",
+                "Athletics",
+                "Insight",
+                "Investigation",
+                "Nature",
+                "Perception",
+                "Stealth",
+                "Survival"
+            ]
+        ],
+        "equipment": [
+            ["scale mail", "leather armor"], 
+            ["two shortswords", "two simple melee weapons"],
+            ["Dungeoneer's pack", "explorer's pack"],
+            "longbow and quiver + 20 arrows"
+        ],
+        "feats": [
+            "Favored Enemy: Gain advantage on survival checks to track favored enemy (creature type or two humanoid races) and INT checks to recall info about them. You learn your enemy’s language (if they have one).",
+            "Natural Explorer: adept at navigating chosen terrain",
+            "Fighting Style:<br>Archery – bonus +2 to atk rolls w/ ranged weapons<br>Defense – gain +1 AC while wearing armor<br>Dueling – bonus +2 dmg to attack rolls when wielding single melee weapon<br>Two-Weapon Fighting – add ability mod to dmg of second atk when dual wielding",
+        ],
+        "level": 1
+    },
+    {
+        "classname": "Rogue",
+        "subclass": null,
+        "hitDice": "d8",
+        "HP": 8,
+        "proficiency-bonus": 2,
+        "proficiencies": [
+            "", 
+            ""
+        ],
+        "savingThrows": ["STR", "CON"],
+        "skills": [
+            2, 
+            [
+                "Acrobatics",
+                "Animal Handling",
+                "Athletics",
+                "History",
+                "Insight",
+                "Perception",
+                "Survival"
+            ]
+        ],
+        "equipment": [
+            [], 
+            [],
+            [],
+            []
+        ],
+        "feats": [
+        ],
+        "level": 1
+    },
+    {
+        "classname": "Sorcerer",
+        "subclass": null,
+        "hitDice": "d10",
+        "HP": 10,
+        "proficiency-bonus": 2,
+        "proficiencies": [
+            "", 
+            ""
+        ],
+        "savingThrows": ["STR", "CON"],
+        "skills": [
+            2, 
+            [
+                "Acrobatics",
+                "Animal Handling",
+                "Athletics",
+                "History",
+                "Insight",
+                "Perception",
+                "Survival"
+            ]
+        ],
+        "equipment": [
+            [], 
+            [],
+            [],
+            []
+        ],
+        "feats": [
+        ],
+        "level": 1
+    },
+    {
+        "classname": "Warlock",
+        "subclass": null,
+        "hitDice": "d10",
+        "HP": 10,
+        "proficiency-bonus": 2,
+        "proficiencies": [
+            "", 
+            ""
+        ],
+        "savingThrows": ["STR", "CON"],
+        "skills": [
+            2, 
+            [
+                "Acrobatics",
+                "Animal Handling",
+                "Athletics",
+                "History",
+                "Insight",
+                "Perception",
+                "Survival"
+            ]
+        ],
+        "equipment": [
+            [], 
+            [],
+            [],
+            []
+        ],
+        "feats": [
+        ],
+        "level": 1
+    },
+    {
+        "classname": "Wizard",
+        "subclass": null,
+        "hitDice": "d10",
+        "HP": 10,
+        "proficiency-bonus": 2,
+        "proficiencies": [
+            "", 
+            ""
+        ],
+        "savingThrows": ["STR", "CON"],
+        "skills": [
+            2, 
+            [
+                "Acrobatics",
+                "Animal Handling",
+                "Athletics",
+                "History",
+                "Insight",
+                "Perception",
+                "Survival"
+            ]
+        ],
+        "equipment": [
+            [], 
+            [],
+            [],
+            []
+        ],
+        "feats": [
+        ],
+        "level": 1
     }
 ];
 
