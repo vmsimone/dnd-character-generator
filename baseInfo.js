@@ -492,6 +492,8 @@ const CLASSES = [
             "Jack of All Trades – add half proficiency (rounded down) to any check you’re not proficient in",
             "Song of Rest"
         ],
+        "spellsKnown": [2, 4],
+        "spellSlots": [2],
         "level": 1
     },
     {
@@ -528,6 +530,8 @@ const CLASSES = [
             "Turn Undead – Present holy symbol as an action. Each undead that perceives you must make a WIS saving throw or be turned for 1 minute (or until taking damage). Turned creatures can only try to escape during their turn and won’t willingly move w/in 30 ft of you"
         ],
         "subClass": null,
+        "spellsKnown": [3, "all cleric"],
+        "spellSlots": [2],
         "level": 1
     },
     {
@@ -567,6 +571,8 @@ const CLASSES = [
             "Wild Shape (2 / rest): Can magically change into a land beast (Max CR ¼) you have seen for ½ druid level hours or until reverting (bonus action)"
         ],
         "subClass": null,
+        "spellsKnown": [2, "all druid"],
+        "spellSlots": [2],
         "level": 1
     },
     {
@@ -715,131 +721,148 @@ const CLASSES = [
         "subclass": null,
         "hitDice": "d8",
         "HP": 8,
+        "languages": "Thieves' Cant",
         "proficiency-bonus": 2,
         "proficiencies": [
-            "", 
-            ""
+            "light armor", 
+            "simple weapons, hand crossbows, longswords, rapiers, shortswords",
+            "Thieves' tools"
         ],
-        "savingThrows": ["STR", "CON"],
+        "savingThrows": ["DEX", "INT"],
         "skills": [
-            2, 
+            4, 
             [
                 "Acrobatics",
-                "Animal Handling",
                 "Athletics",
-                "History",
+                "Deception",
                 "Insight",
+                "Intimidation",
+                "Investigation",
                 "Perception",
-                "Survival"
+                "Performance",
+                "Persuasion",
+                "Sleight of Hand",
+                "Stealth"
             ]
         ],
         "equipment": [
-            [], 
-            [],
-            [],
-            []
+            ["rapier", "shortsword"], 
+            ["shortbow and quiver + 20 arrows", "shortsword"],
+            ["burglar's pack", "dungeoneer's pack", "explorer's pack"],
+            "leather armor",
+            "two daggers",
+            "thieves' tools"
         ],
         "feats": [
+            "Expertise – choose two skill proficiencies, or one skill proficiency and your proficiency with thieves’ tools. Your proficiency bonus is doubled for any ability check you make that uses either of the chosen proficiencies.",
+            "sneak Attack – Once per turn, you can deal an extra 1d6 damage to one creature you hit with an attack if you have advantage on the attack roll with a finesse or ranged weapon. You don’t need advantage on the attack roll if another enemy of the target is within 5 feet of it, that enemy isn’t incapacitated, and you don’t have disadvantage on the attack roll."
         ],
         "level": 1
     },
     {
         "classname": "Sorcerer",
         "subclass": null,
-        "hitDice": "d10",
-        "HP": 10,
+        "hitDice": "d6",
+        "HP": 6,
         "proficiency-bonus": 2,
         "proficiencies": [
-            "", 
-            ""
+            "daggers, darts, slings, quarterstaffs, light crossbows"
         ],
-        "savingThrows": ["STR", "CON"],
+        "savingThrows": ["CON", "CHA"],
         "skills": [
             2, 
             [
-                "Acrobatics",
-                "Animal Handling",
-                "Athletics",
-                "History",
+                "Arcana",
+                "Deception",
                 "Insight",
-                "Perception",
-                "Survival"
+                "Intimidation",
+                "Persuasion",
+                "Religion"
             ]
         ],
         "equipment": [
-            [], 
-            [],
-            [],
-            []
+            ["light crossbow + 20 bolts", "simple weapon"], 
+            ["component pouch", "arcane focus"],
+            ["dungeoneer's pack", "explorer's pack"],
+            "two daggers"
         ],
         "feats": [
+            "Sorcerous Origin – it's complicated; Draconic Bloodline or Wild Magic"
         ],
+        "spellsKnown": [4, 2],
+        "spellSlots": [2],
         "level": 1
     },
     {
         "classname": "Warlock",
         "subclass": null,
-        "hitDice": "d10",
-        "HP": 10,
+        "hitDice": "d8",
+        "HP": 8,
         "proficiency-bonus": 2,
         "proficiencies": [
-            "", 
-            ""
+            "light armor", 
+            "simple weapons"
         ],
-        "savingThrows": ["STR", "CON"],
+        "savingThrows": ["WIS", "CHA"],
         "skills": [
             2, 
             [
-                "Acrobatics",
-                "Animal Handling",
-                "Athletics",
+                "Arcana",
+                "Deception",
                 "History",
-                "Insight",
-                "Perception",
-                "Survival"
+                "Intimidation",
+                "Investigation",
+                "Nature",
+                "Religion"
             ]
         ],
         "equipment": [
-            [], 
-            [],
-            [],
-            []
+            ["light crossbow + 20 bolts", "simple weapon"], 
+            ["component pouch", "arcane focus"],
+            ["scholar's pack", "dungeoneer's pack"],
+            "leather armor",
+            "simple weapon",
+            "two daggers"
         ],
         "feats": [
         ],
+        "spellsKnown": [2, 2],
+        "spellSlots": [1],
         "level": 1
     },
     {
         "classname": "Wizard",
         "subclass": null,
-        "hitDice": "d10",
-        "HP": 10,
+        "hitDice": "d6",
+        "HP": 6,
         "proficiency-bonus": 2,
         "proficiencies": [
-            "", 
-            ""
+            "daggers, darts, slings, quarterstaffs, light crossbows"
         ],
-        "savingThrows": ["STR", "CON"],
+        "savingThrows": ["INT", "WIS"],
         "skills": [
             2, 
             [
-                "Acrobatics",
-                "Animal Handling",
-                "Athletics",
+                "Arcana",
                 "History",
                 "Insight",
-                "Perception",
-                "Survival"
+                "Investigation",
+                "Medicine",
+                "Religion"
             ]
         ],
         "equipment": [
-            [], 
-            [],
-            [],
-            []
+            ["quarterstaff", "dagger"], 
+            ["component pouch", "arcane focus"],
+            ["scholar's pack", "explorer's pack"],
+            "spellbook"
         ],
         "feats": [
+            "Spellcasting – you have a spellbook containing spells that show the first glimmerings of your true power.",
+            "Arcane Recovery – once per day when you finish a short rest, you can choose expended spell slots to recover. The spell slots can have a combined level that is equal to or less than half your wizard level (rounded up), and none of the slots can be 6th level or higher."
         ],
+        "spellsKnown": [3, "all wizard"],
+        "spellSlots": [2],
         "level": 1
     }
 ];
