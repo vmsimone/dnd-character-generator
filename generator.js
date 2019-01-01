@@ -130,13 +130,12 @@ function assignSkillBonuses(characterProficiencies, abilityScores, proficiencySc
 		"Sleight of Hand": dexMod,
 		"Stealth": dexMod,
 		"Survival": wisMod
-	}
-	
-	characterProficiencies.forEach(skill => {
-		if(skills[skill]) {
-			skills[skill] += proficiencyScore;	
-		}
-	});
+  }
+
+  for(i=0; i<characterProficiencies.length; i++) {
+    let proficientSkill = characterProficiencies[i].value;
+		skills[proficientSkill] += proficiencyScore;
+  }
 	return skills;
 }
 
@@ -176,7 +175,9 @@ function generateCharacter(race, background, classname) {
   let character = Object.assign({}, race, background, classname, combinedStats);
   const baseStats = assignStats();
   character.stats = addRacialBonuses(baseStats, character.stats);
-  character.skills = assignSkillBonuses(character.proficiencies, character.stats, 3);
+
+  let selectedCharSkills = $('.js-class-skills input:checked');
+  character.skills = assignSkillBonuses(selectedCharSkills, character.stats, character["proficiency-bonus"]);
   
   displayCharacter(character);
 }
@@ -219,6 +220,7 @@ function displayCharacter(character) {
   const featList = generateList(character.feats);
   const equipment = generateList(character.equipment);
   const HP = character.HP + character.stats.CON.mod;
+  const proficiencyScore = addPlusSign(character["proficiency-bonus"]);
 
   const abilityList = generateAbilityList(character.stats);
   const skillList = generateSkillsList(character.skills);
@@ -227,6 +229,7 @@ function displayCharacter(character) {
     <h2>${character.race.split('_').join(' ')} ${character.classname} </h2>
     <h3>Background: ${character.background.split('_').join(' ')}</h3>
     <h4>HP: ${HP}</h4>
+    <h4>Proficiency: ${proficiencyScore}</h4>
     <h4>Initiative: ${addPlusSign(character.stats.DEX.mod)}</h4>
     ${abilityList}
     <h4>Languages:</h4>

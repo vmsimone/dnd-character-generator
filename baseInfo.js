@@ -300,7 +300,7 @@ const BACKGROUNDS = [
         ]
     },
     {
-        "background": "Criminal/Spy",
+        "background": "Criminal/ Spy",
         "proficiencies": ["Deception", "Stealth", "Thieves' Tools", "one gaming set"],
         "languages": [],
         "equipment": ["crowbar", "dark common clothes w/ hood"],
@@ -311,7 +311,7 @@ const BACKGROUNDS = [
         ]
     },
     {
-        "background": "Entertainer/Gladiator",
+        "background": "Entertainer/ Gladiator",
         "proficiencies": ["Acrobatics", "Performance", "Disguise kit", "one musical instrument"],
         "languages": [],
         "equipment": ["instrument", "admirer’s favor (love letter, hair, trinket)", "costume"],
