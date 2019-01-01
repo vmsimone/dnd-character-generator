@@ -286,7 +286,8 @@ const BACKGROUNDS = [
     },
     {
         "background": "Charlatan",
-        "proficiencies": ["Deception", "Sleight of Hand", "disguise kit", "forgery kit"],
+        "proficiencies": ["Deception", "Sleight of Hand"],
+        "toolProficiencies": "disguise kit, forgery kit",
         "languages": [],
         "equipment": [
             "fine clothes", 
@@ -301,7 +302,8 @@ const BACKGROUNDS = [
     },
     {
         "background": "Criminal/ Spy",
-        "proficiencies": ["Deception", "Stealth", "Thieves' Tools", "one gaming set"],
+        "proficiencies": ["Deception", "Stealth"],
+        "toolProficiencies": "Thieves' Tools, one gaming set",
         "languages": [],
         "equipment": ["crowbar", "dark common clothes w/ hood"],
         "money": { "GP": 15 },
@@ -312,7 +314,8 @@ const BACKGROUNDS = [
     },
     {
         "background": "Entertainer/ Gladiator",
-        "proficiencies": ["Acrobatics", "Performance", "Disguise kit", "one musical instrument"],
+        "proficiencies": ["Acrobatics", "Performance"],
+        "toolProficiencies": "Disguise kit, one musical instrument",
         "languages": [],
         "equipment": ["instrument", "admirer’s favor (love letter, hair, trinket)", "costume"],
         "money": { "GP": 15 },
@@ -323,7 +326,8 @@ const BACKGROUNDS = [
     },
     {
         "background": "Folk_Hero",
-        "proficiencies": ["Animal Handling", "Survival", "land vehicles", "Artisan’s Tools"],
+        "proficiencies": ["Animal Handling", "Survival", "land vehicles"],
+        "toolProficiencies": "Artisan’s Tools",
         "languages": [],
         "equipment": ["artisan's tools", "shovel", "iron pot", "common clothes"],
         "money": { "GP": 10 },
@@ -335,6 +339,7 @@ const BACKGROUNDS = [
     {
         "background": "Guild_Artisan",
         "proficiencies": ["Insight", "Persuasion", "Artisan’s Tools"],
+        "toolProficiencies": "Herbalism Kit",
         "languages": [],
         "equipment": ["artisan's tools", "letter of introduction from guild", "traveler's clothes"],
         "money": { "GP": 15 },
@@ -344,7 +349,8 @@ const BACKGROUNDS = [
     },
     {
         "background": "Hermit",
-        "proficiencies": ["Medicine", "Religion", "Herbalism Kit"],
+        "proficiencies": ["Medicine", "Religion"],
+        "toolProficiencies": "Herbalism Kit",
         "languages": ["any"],
         "equipment": ["scroll case filled with notes", "winter blanket", "common clothes", "herbalism kit"],
         "money": { "GP": 5 },
@@ -354,7 +360,8 @@ const BACKGROUNDS = [
     },
     {
         "background": "Noble",
-        "proficiencies": ["History", "Persuasion", "a gaming set"],
+        "proficiencies": ["History", "Persuasion"],
+        "toolProficiencies": "a gaming set",
         "languages": ["any"],
         "equipment": ["fine clothes", "signet ring", "scroll of pedigree"],
         "money": { "GP": 25 },
@@ -373,8 +380,57 @@ const BACKGROUNDS = [
         ]
     },
     {
+        "background": "Sage",
+        "proficiencies": ["Arcana", "History"],
+        "languages": ["any", "any"],
+        "equipment": [
+            "bottle of black ink", 
+            "quill", 
+            "small knife", 
+            "letter from dead colleague w/ unanswered question",
+            "common clothes"
+        ],
+        "money": { "GP": 10 },
+        "feats": [
+            "Researcher – if there’s something you don’t know, you know where to go to learn it, a person, library, other sage, etc. You’d also know if something is very well hidden or impossible to learn."
+        ]
+    },
+    {
+        "background": "Sailor",
+        "proficiencies": ["Athletics", "Perception"],
+        "toolProficiencies": "navigator's tools, water vehicles",
+        "languages": [],
+        "equipment": ["silk rope (50 ft)", "belaying pin (club)", "lucky charm (e.g. rabbit foot, rock with hole)", "common clothes"],
+        "money": { "GP": 10 },
+        "feats": [
+            "Ship’s Passage – can secure free passage on sailing ships for you and your party. This is considered a favor and you’ll be required to assist the crew and accommodate their schedules."
+        ]
+    },
+    {
+        "background": "Pirate",
+        "proficiencies": ["Athletics", "Perception"],
+        "languages": [],
+        "equipment": ["silk rope (50 ft)", "belaying pin (club)", "lucky charm (e.g. rabbit foot, rock with hole)", "common clothes"],
+        "money": { "GP": 10 },
+        "feats": [
+            "Bad Reputation – People fear you and will let you get away with minor crimes without reporting them"
+        ]
+    },
+    {
+        "background": "Soldier",
+        "proficiencies": ["Athletics", "Intimidation"],
+        "toolProficiencies": "gaming set, land vehicles",
+        "languages": [],
+        "equipment": ["rank insignia", "trophy from fallen enemy", "bone dice or deck of cards", "common clothes"],
+        "money": { "GP": 10 },
+        "feats": [
+            "Military Rank – soldiers loyal to your organization recognize and respect your authority. Can invoke rank to exert influence or get simple equipment or horses. You also have access to encampments"
+        ]
+    },
+    {
         "background": "Urchin",
-        "proficiencies": ["Sleight of Hand", "Stealth", "Thieves' Tools", "Disguise kit"],
+        "proficiencies": ["Sleight of Hand", "Stealth"],
+        "toolProficiencies":  "Thieves' Tools, Disguise kit",
         "languages": [],
         "equipment": ["small knife", "map of hometown", "pet mouse", "token to remember parents", "common clothes"],
         "money": { "GP": 10 },
