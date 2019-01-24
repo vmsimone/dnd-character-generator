@@ -30,7 +30,7 @@ function readyListeners() {
     $('.dice-roller').on('click', rollStats);
     $('.ability-score').on('click', function() {
 		let ability = $(this).val();
-		readySwap(ability);
+        readySwap(ability);
 	});
 }
 

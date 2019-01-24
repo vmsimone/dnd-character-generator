@@ -1,15 +1,29 @@
+const ABILITY_NAMES = ["str", "dex", "con", "int", "wis", "cha"];
+
+function rollDice(sides) {
+  return Math.floor(Math.random() * sides) + 1;
+}
+
 //simulates rolling 4 dice and adding the highest three
 function roll4add3() {
-  const first = Math.floor(Math.random() * 6) + 1;
-  const second = Math.floor(Math.random() * 6) + 1;
-  const third = Math.floor(Math.random() * 6) + 1;
-  const fourth = Math.floor(Math.random() * 6) + 1;
+  const first = rollDice(6);
+  const second = rollDice(6);
+  const third = rollDice(6);
+  const fourth = rollDice(6);
   
   let rolls = [first, second, third, fourth];
   rolls.sort(function(a, b){return b - a});
 
-  const total = rolls[0] + rolls[1] + rolls[2]
-  return total
+  const total = rolls[0] + rolls[1] + rolls[2];
+  return total;
+}
+
+function rollStats() {
+  for(i=0; i <= 6; i++) {
+		let target = "#" + ABILITY_NAMES[i];
+		let defaultVal = roll4add3();
+		$(target).val(defaultVal);
+	}
 }
 
 function calculateMod(statLevel) {
@@ -20,43 +34,32 @@ function calculateMod(statLevel) {
   }
 }
 
-function rollStats() {
-  for(i=0; i <= 6; i++) {
-		let target = "#stat-" + i;
-		let defaultVal = roll4add3();
-		$(target).val(defaultVal);
-	}
-}
-
 function assignStats() {
-	const str = $('input.str').val();
-  	const dex = $('input.dex').val();
-  	const con = $('input.con').val();
-  	const int = $('input.int').val();
-  	const wis = $('input.wis').val();
-  	const cha = $('input.cha').val();
-
-  return {
-    "STR": calculateMod(str),
-    "DEX": calculateMod(dex),
-    "CON": calculateMod(con),
-    "INT": calculateMod(int),
-    "WIS": calculateMod(wis),
-    "CHA": calculateMod(cha),
-    "AC": 10 + Math.floor((dex - 10) / 2)
+  let abilityObject = {
+    "HP": 0
   }
+
+  ABILITY_NAMES.forEach(ability => {
+    let abilityInput = 'input#' + ability;
+    let thisVal = $(abilityInput).val();
+    abilityObject[ability] = calculateMod(thisVal);
+  });
+
+  abilityObject.AC = 10 + abilityObject.dex.mod;
+
+  return abilityObject;
 }
 
 //needs a better name
 function reassignStats() {
   $('.ability-score').remove();
 
-	$('input.str').before('<button type="button" class="ability-score" value="str">STR</button>');
-	$('input.dex').before('<button type="button" class="ability-score" value="dex">DEX</button>');
-	$('input.con').before('<button type="button" class="ability-score" value="con">CON</button>');
-	$('input.int').before('<button type="button" class="ability-score" value="int">INT</button>');
-	$('input.wis').before('<button type="button" class="ability-score" value="wis">WIS</button>');
-	$('input.cha').before('<button type="button" class="ability-score" value="cha">CHA</button>');
+	$('input#str').before('<button type="button" class="ability-score" value="str">STR</button>');
+	$('input#dex').before('<button type="button" class="ability-score" value="dex">DEX</button>');
+	$('input#con').before('<button type="button" class="ability-score" value="con">CON</button>');
+	$('input#int').before('<button type="button" class="ability-score" value="int">INT</button>');
+	$('input#wis').before('<button type="button" class="ability-score" value="wis">WIS</button>');
+	$('input#cha').before('<button type="button" class="ability-score" value="cha">CHA</button>');
 }
 
 function readySwap(ability) {
@@ -68,14 +71,17 @@ function readySwap(ability) {
   $('.ability-scores h3').text('Swap with?');
 }
 
-//needs better names
-function swapStats(original, substitute) {
+function rearrangeClasses(original, substitute) {
 	const originalSelector = '#' + document.getElementsByClassName(original)[0].id;
   const substituteSelector = '#' + document.getElementsByClassName(substitute)[0].id;
 
   $(originalSelector).removeClass(original).addClass(substitute);
   $(substituteSelector).removeClass(substitute).addClass(original);
+}
 
+//need better names
+function swapStats(original, substitute) {
+  rearrangeClasses(original, substitute);
   reassignStats();
 	
 	$('.ability-score').off('click');
@@ -105,11 +111,11 @@ function addRacialBonuses(baseStats, bonuses) {
 }
 
 function assignSkillBonuses(characterProficiencies, abilityScores, proficiencyScore=0) {
-	const strMod = abilityScores.STR.mod;
-	const dexMod = abilityScores.DEX.mod;
-	const intMod = abilityScores.INT.mod;
-	const wisMod = abilityScores.WIS.mod;
-	const chaMod = abilityScores.CHA.mod;
+	const strMod = abilityScores.str.mod;
+	const dexMod = abilityScores.dex.mod;
+	const intMod = abilityScores.int.mod;
+	const wisMod = abilityScores.wis.mod;
+	const chaMod = abilityScores.cha.mod;
 	
 	const skills = {
 		"Acrobatics": dexMod,
@@ -174,6 +180,8 @@ function generateCharacter(race, background, classname) {
   //combined arrays we stored will fill in the missing items
   let character = Object.assign({}, race, background, classname, combinedStats);
   const baseStats = assignStats();
+
+  console.log(baseStats);
   character.stats = addRacialBonuses(baseStats, character.stats);
 
   let selectedCharSkills = $('.js-class-skills input:checked');
@@ -203,12 +211,11 @@ function generateSkillsList(skillsObj) {
 }
 
 function generateAbilityList(statsObj) {
-  const abilities = ['STR', 'DEX', 'CON', 'INT', 'WIS', 'CHA'];
   let scoresAndMods = '<p>';
 
-  abilities.forEach(ability => {
+  ABILITY_NAMES.forEach(ability => {
     let mod = addPlusSign(statsObj[ability].mod);
-    scoresAndMods += `${ability}: ${statsObj[ability].lvl}, ${mod}<br>`
+    scoresAndMods += `${ability.toUpperCase()}: ${statsObj[ability].lvl}, ${mod}<br>`
   });
   
   scoresAndMods += 'AC: ' + statsObj.AC
@@ -219,7 +226,7 @@ function displayCharacter(character) {
   const langList = generateList(character.languages);
   const featList = generateList(character.feats);
   const equipment = generateList(character.equipment);
-  const HP = character.HP + character.stats.CON.mod;
+  const HP = character.HP + character.stats.con.mod;
   const proficiencyScore = addPlusSign(character["proficiency-bonus"]);
 
   const abilityList = generateAbilityList(character.stats);
@@ -230,7 +237,7 @@ function displayCharacter(character) {
     <h3>Background: ${character.background.split('_').join(' ')}</h3>
     <h4>HP: ${HP}</h4>
     <h4>Proficiency: ${proficiencyScore}</h4>
-    <h4>Initiative: ${addPlusSign(character.stats.DEX.mod)}</h4>
+    <h4>Initiative: ${addPlusSign(character.stats.dex.mod)}</h4>
     ${abilityList}
     <h4>Languages:</h4>
     <ul>
