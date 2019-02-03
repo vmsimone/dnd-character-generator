@@ -18,12 +18,27 @@ function roll4add3() {
   return total;
 }
 
-function rollStats() {
+function rollAbilities() {
   for(i=0; i <= 6; i++) {
 		let target = "#" + ABILITY_NAMES[i];
 		let defaultVal = roll4add3();
 		$(target).val(defaultVal);
 	}
+}
+
+function assignAbilityScores(charClass) {
+  let abilityObject = {}
+
+  ABILITY_NAMES.forEach(ability => {
+    let abilityInput = '#' + ability;
+    let thisVal = $(abilityInput).val();
+    abilityObject[ability] = calculateMod(thisVal);
+  });
+
+  abilityObject.AC = 10 + abilityObject.dex.mod;
+  abilityObject.HP = charClass.HP + abilityObject.con.mod;
+
+  return abilityObject;
 }
 
 function calculateMod(statLevel) {
@@ -40,7 +55,7 @@ function assignStats() {
   }
 
   ABILITY_NAMES.forEach(ability => {
-    let abilityInput = 'input#' + ability;
+    let abilityInput = '#' + ability;
     let thisVal = $(abilityInput).val();
     abilityObject[ability] = calculateMod(thisVal);
   });
@@ -53,6 +68,13 @@ function assignStats() {
 //needs a better name
 function reassignStats() {
   $('.ability-score').remove();
+
+  // ABILITY_NAMES.forEach(ability => {
+  //   let abilityInput = 'input#' + ability;
+  //   $(abilityInput).before(
+  //     `<button type="button" class="ability-score" value="${ability}">${ability.toUpperCase()}</button>`
+  //   );    
+  // });
 
 	$('input#str').before('<button type="button" class="ability-score" value="str">STR</button>');
 	$('input#dex').before('<button type="button" class="ability-score" value="dex">DEX</button>');

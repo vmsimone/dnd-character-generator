@@ -27,7 +27,7 @@ function readyListeners() {
             scrollTop: $('.character-info').offset().top
         }, 500);
     });
-    $('.dice-roller').on('click', rollStats);
+    $('.dice-roller').on('click', rollAbilities);
     $('.ability-score').on('click', function() {
 		let ability = $(this).val();
         readySwap(ability);
